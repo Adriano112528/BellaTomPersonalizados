@@ -1,0 +1,205 @@
+/*=========================================================
+BELLA TOM - CTA PREMIUM
+=========================================================*/
+
+.cta{
+
+    width:100%;
+    max-width:1800px;
+
+    /* sobe o banner */
+    margin:-35px auto 80px;
+
+    padding:0 30px;
+
+}
+
+.ctaBanner{
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:26px;
+
+    background:#050505;
+
+    border:1px solid rgba(231,189,66,.18);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.45),
+        inset 0 1px 0 rgba(255,255,255,.05);
+
+    transition:.35s;
+
+}
+
+.ctaBanner:hover{
+
+    border-color:#E7BD42;
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.60),
+        0 0 35px rgba(231,189,66,.12);
+
+}
+
+.ctaBanner img{
+
+    display:block;
+
+    width:100%;
+
+    height:auto;
+
+    transition:.6s;
+
+}
+
+.ctaBanner:hover img{
+
+    transform:scale(1.02);
+
+}
+
+/*==================================
+BOTÃO
+==================================*/
+
+.ctaButton{
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:34px;
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:14px;
+
+    width:340px;
+
+    height:64px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:linear-gradient(
+        180deg,
+        #f5d772 0%,
+        #E7BD42 100%
+    );
+
+    color:#111;
+
+    font-size:19px;
+
+    font-weight:700;
+
+    text-decoration:none;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    box-shadow:
+        0 15px 35px rgba(231,189,66,.35);
+
+    z-index:10;
+
+}
+
+.ctaButton svg{
+
+    font-size:23px;
+
+}
+
+.ctaButton:hover{
+
+    transform:translateX(-50%) translateY(-5px);
+
+    box-shadow:
+        0 25px 45px rgba(231,189,66,.45);
+
+}
+
+.ctaButton:active{
+
+    transform:translateX(-50%) scale(.98);
+
+}
+
+/*==================================
+RESPONSIVO
+==================================*/
+
+@media(max-width:1200px){
+
+    .cta{
+
+        margin:-20px auto 70px;
+
+    }
+
+}
+
+@media(max-width:900px){
+
+    .cta{
+
+        margin:0 auto 60px;
+
+        padding:0 20px;
+
+    }
+
+    .ctaBanner{
+
+        border-radius:20px;
+
+    }
+
+    .ctaButton{
+
+        width:280px;
+
+        height:56px;
+
+        font-size:16px;
+
+        bottom:20px;
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    .cta{
+
+        margin:10px auto 50px;
+
+    }
+
+    .ctaButton{
+
+        width:90%;
+
+        max-width:300px;
+
+        height:54px;
+
+        font-size:15px;
+
+    }
+
+}

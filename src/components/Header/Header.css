@@ -1,0 +1,491 @@
+/* ==========================================================
+   HEADER PREMIUM BELLA TOM 8.0
+========================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+.header{
+
+    width:100%;
+
+    height:100px;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:999;
+
+    background:#0b0b0b;
+
+    border-bottom:1px solid rgba(231,189,66,.12);
+
+    backdrop-filter:blur(20px);
+
+}
+
+.header-container{
+    max-width:1700px;
+    height:100px;
+    margin:0 auto;
+
+    display:grid;
+    grid-template-columns:260px 1fr auto;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:0 20px;
+}
+
+/* ==========================================================
+   LOGO
+========================================================== */
+
+.header-logo{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    flex-shrink:0;
+
+}
+
+.header-logo h1{
+
+    display:flex;
+
+    align-items:center;
+
+    line-height:1;
+
+    font-size:46px;
+
+    font-weight:900;
+
+    letter-spacing:-2px;
+
+}
+
+.bella{
+
+    color:#ff8fc7;
+
+}
+
+.tom{
+
+    color:#d9dee5;
+
+}
+
+.header-logo p{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    margin-top:6px;
+
+    color:#E7BD42;
+
+    font-size:10px;
+
+    font-weight:700;
+
+    letter-spacing:6px;
+
+}
+
+.paw{
+
+    letter-spacing:0;
+
+}
+
+/* ==========================================================
+   MENU
+========================================================== */
+
+.header-menu{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    gap:26px;
+
+    position:relative;
+
+    top:-2px;
+
+}
+
+.header-menu a{
+
+    position:relative;
+
+    color:#ffffff;
+
+    text-decoration:none;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    transition:.30s;
+
+    padding:8px 0;
+
+}
+
+.header-menu a:hover{
+
+    color:#E7BD42;
+
+}
+
+.header-menu a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:-8px;
+
+    transform:translateX(-50%);
+
+    width:0;
+
+    height:2px;
+
+    border-radius:20px;
+
+    background:#E7BD42;
+
+    transition:.30s;
+
+}
+
+.header-menu a:hover::after{
+
+    width:100%;
+
+}
+/* ==========================================================
+   AÇÕES
+========================================================== */
+
+.header-actions{
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:8px;
+    flex-shrink:0;
+}
+
+/* ==========================================================
+   BUSCA
+========================================================== */
+
+.search{
+    width:220px;
+    height:46px;
+    display:flex;
+    align-items:center;
+    padding:0 14px;
+    gap:8px;
+    background:#171717;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:999px;
+    transition:.30s;
+}
+
+.search:hover{
+
+    border-color:#E7BD42;
+
+}
+
+.search:focus-within{
+
+    border-color:#E7BD42;
+
+    box-shadow:0 0 20px rgba(231,189,66,.18);
+
+}
+
+.search-icon{
+
+    color:#E7BD42;
+
+    font-size:16px;
+
+    flex-shrink:0;
+
+}
+
+.search input{
+
+    flex:1;
+
+    background:none;
+
+    border:none;
+
+    outline:none;
+
+    color:#fff;
+
+    font-size:14px;
+
+}
+
+.search input::placeholder{
+
+    color:#8c8c8c;
+
+}
+
+/* ==========================================================
+   REDES SOCIAIS
+========================================================== */
+
+.social-link{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-decoration:none;
+
+}
+
+.icon{
+    font-size:24px;
+    color:#ffffff;
+    transition:.30s;
+    cursor:pointer;
+}
+
+.icon:hover{
+
+    color:#E7BD42;
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================================================
+   BOTÃO
+========================================================== */
+
+.btnBudget{
+    height:46px;
+    padding:0 16px;
+    border:none;
+    border-radius:999px;
+    background:#E7BD42;
+    color:#111;
+    font-size:14px;
+    font-weight:700;
+    white-space:nowrap;
+    cursor:pointer;
+    transition:.30s;
+}
+
+.btnBudget:hover{
+
+    background:#f4ca4d;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 12px 25px rgba(231,189,66,.28);
+
+}
+
+/* ==========================================================
+   CARRINHO
+========================================================== */
+
+.cart{
+    font-size:24px;
+    color:#E7BD42;
+    cursor:pointer;
+    transition:.30s;
+}
+
+.cart:hover{
+
+    transform:scale(1.08);
+
+}
+/* ==========================================================
+   ANIMAÇÕES
+========================================================== */
+
+.header-menu a,
+.icon,
+.cart,
+.btnBudget,
+.search{
+    transition:all .30s ease;
+}
+
+.header-menu a:hover{
+    transform:translateY(-2px);
+}
+
+.btnBudget:active{
+    transform:scale(.98);
+}
+
+.cart:active,
+.icon:active{
+    transform:scale(.92);
+}
+
+/* ==========================================================
+   NOTEBOOK
+========================================================== */
+
+@media (max-width:1600px){
+
+    .header-container{
+        padding:0 20px;
+        gap:15px;
+    }
+
+    .header-logo h1{
+        font-size:42px;
+    }
+
+    .header-menu{
+        gap:20px;
+    }
+
+    .header-menu a{
+        font-size:14px;
+    }
+
+    .search{
+        width:200px;
+    }
+
+}
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width:1250px){
+
+    .header-menu{
+        display:none;
+    }
+
+    .search{
+        width:200px;
+    }
+
+}
+
+/* ==========================================================
+   CELULAR
+========================================================== */
+
+@media (max-width:768px){
+
+    .header{
+
+        height:75px;
+
+    }
+
+    .header-container{
+
+        height:75px;
+        padding:0 15px;
+
+        gap:10px;
+
+    }
+
+    .header-logo h1{
+
+        font-size:34px;
+
+    }
+
+    .header-logo p{
+
+        font-size:9px;
+
+        letter-spacing:4px;
+
+    }
+
+    .search{
+
+        display:none;
+
+    }
+
+    .btnBudget{
+
+        display:none;
+
+    }
+
+    .icon{
+
+        font-size:22px;
+
+    }
+
+    .cart{
+
+        font-size:24px;
+
+    }
+
+}
+
+/* ==========================================================
+   TELAS MUITO GRANDES
+========================================================== */
+
+@media (min-width:1900px){
+
+    .header-container{
+
+        max-width:1800px;
+
+    }
+
+    .header-menu{
+
+        gap:35px;
+
+    }
+
+    .search{
+
+        width:280px;
+
+    }
+
+}
