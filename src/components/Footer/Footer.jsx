@@ -26,20 +26,6 @@ Poderia me ajudar?`
   return (
     <footer className="footer">
 
-      <div
-        style={{
-          background: "#ff0000",
-          color: "#ffffff",
-          fontSize: "38px",
-          fontWeight: "bold",
-          textAlign: "center",
-          padding: "20px",
-          marginBottom: "20px"
-        }}
-      >
-        TESTE FOOTER - ESTE É O FOOTER CORRETO
-      </div>
-
       <div className="footerContainer">
 
         {/* LOGO */}
@@ -208,18 +194,6 @@ Poderia me ajudar?`
 
       </div>
 
-      <h1
-        style={{
-          background: "red",
-          color: "#fff",
-          textAlign: "center",
-          padding: "20px",
-          fontSize: "40px"
-        }}
-      >
-        TESTE FOOTER NOVO
-      </h1>
-
       <div className="footerBottom">
 
         <span>
@@ -227,7 +201,7 @@ Poderia me ajudar?`
         </span>
 
         <span>
-          Desenvolvido por <strong>ARS Tecnologia 2026</strong>
+          Desenvolvido por <strong>ARS Tecnologia</strong>
         </span>
 
       </div>
