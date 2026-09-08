@@ -26,6 +26,20 @@ Poderia me ajudar?`
   return (
     <footer className="footer">
 
+      <div
+        style={{
+          background: "#ff0000",
+          color: "#ffffff",
+          fontSize: "38px",
+          fontWeight: "bold",
+          textAlign: "center",
+          padding: "20px",
+          marginBottom: "20px"
+        }}
+      >
+        TESTE FOOTER - ESTE É O FOOTER CORRETO
+      </div>
+
       <div className="footerContainer">
 
         {/* LOGO */}
