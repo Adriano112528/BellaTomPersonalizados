@@ -14,18 +14,24 @@ import {
 import { SiPix } from "react-icons/si";
 
 export default function Footer() {
-  const whatsappMessage = encodeURIComponent(`Olá!
+
+  const whatsappMessage = encodeURIComponent(
+`Olá!
 
 Visitei o site da BellaTom Personalizados e gostaria de solicitar um orçamento.
 
-Poderia me ajudar?`);
+Poderia me ajudar?`
+  );
 
   return (
     <footer className="footer">
+
       <div className="footerContainer">
 
         {/* LOGO */}
+
         <div className="footerLogo borderRight">
+
           <h2>
             <span className="bella">Bella</span>
             <span className="tom">Tom</span>
@@ -42,10 +48,13 @@ Poderia me ajudar?`);
             <br />
             em lembranças especiais.
           </p>
+
         </div>
 
         {/* CONTATO */}
+
         <div className="footerColumn borderRight">
+
           <h3>Contato</h3>
 
           <a
@@ -72,9 +81,11 @@ Poderia me ajudar?`);
             <FaMapMarkerAlt />
             <span>Caxias do Sul - RS</span>
           </div>
+
         </div>
 
         {/* SITE / EMAIL */}
+
         <div className="footerColumn emailColumn borderRight">
 
           <a
@@ -99,16 +110,16 @@ Poderia me ajudar?`);
             ❤
           </div>
 
-          {/* ALTERAÇÃO PARA TESTE */}
           <p>
-            Bem-vindo à
+            Será um prazer
             <br />
-            BellaTom Personalizados!
+            atender você!
           </p>
 
         </div>
 
         {/* REDES */}
+
         <div className="footerColumn borderRight">
 
           <h3>Siga-nos</h3>
@@ -153,6 +164,7 @@ Poderia me ajudar?`);
         </div>
 
         {/* PAGAMENTOS */}
+
         <div className="footerColumn">
 
           <h3 className="footerPayTitle">
@@ -189,7 +201,7 @@ Poderia me ajudar?`);
         </span>
 
         <span>
-          Desenvolvido por <strong>ARS Tecnologia</strong>
+          Desenvolvido por <strong>ARS Tecnologia 2026</strong>
         </span>
 
       </div>
