@@ -208,6 +208,18 @@ Poderia me ajudar?`
 
       </div>
 
+      <h1
+        style={{
+          background: "red",
+          color: "#fff",
+          textAlign: "center",
+          padding: "20px",
+          fontSize: "40px"
+        }}
+      >
+        TESTE FOOTER NOVO
+      </h1>
+
       <div className="footerBottom">
 
         <span>
