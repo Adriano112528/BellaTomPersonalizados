@@ -5,8 +5,8 @@
 .footer {
     width: 100%;
     max-width: 1800px;
-    margin: 60px auto;
-    padding: 0 30px;
+    margin: -70px auto 30px auto;
+    padding: 0 40px;
 }
 
 .footerContainer {
@@ -14,10 +14,10 @@
     background: #121212;
     border: 1px solid rgba(231, 189, 66, .22);
     border-radius: 32px;
-    padding: 60px 40px;
+    padding: 70px 50px;
     display: grid;
-    grid-template-columns: 1.15fr 1fr 1.35fr 1fr 1fr;
-    gap: 30px;
+    grid-template-columns: 1.15fr 1.2fr 1.35fr 1fr 1fr;
+    gap: 35px;
     align-items: start;
     box-shadow: 
         0 0 25px rgba(231, 189, 66, .08),
@@ -63,6 +63,7 @@ LOGO & SLOGAN
     font-size: 15px;
     line-height: 1.7;
     color: #bdbdbd;
+    text-align: left;
 }
 
 /*========================
@@ -72,11 +73,14 @@ COLUNAS GERAIS
 .footerColumn {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
 }
 
 .borderRight {
     border-right: 1px solid rgba(255, 255, 255, 0.08);
-    padding-right: 25px;
+    padding-right: 30px;
 }
 
 .footerColumn h3,
@@ -86,16 +90,27 @@ COLUNAS GERAIS
     font-weight: 700;
     margin-bottom: 22px;
     letter-spacing: 0.5px;
+    text-align: left;
 }
 
 /* Contato */
 .footerItem {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     gap: 12px;
     color: #cfcfcf;
     font-size: 15px;
     margin-bottom: 14px;
+    text-decoration: none;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.footerItem span {
+    white-space: nowrap;
+    line-height: 1.3;
+    text-align: left;
 }
 
 .footerItem svg {
@@ -104,11 +119,37 @@ COLUNAS GERAIS
     flex-shrink: 0;
 }
 
+.footerItemStatic {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 12px;
+    color: #cfcfcf;
+    margin-top: 6px;
+    font-size: 15px;
+    width: 100%;
+}
+
+.footerItemStatic span {
+    line-height: 1.4;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.footerItemStatic svg {
+    color: #E7BD42;
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
 /* Redes Sociais */
 .footerSocial {
     display: flex;
+    justify-content: flex-start;
     gap: 14px;
     margin-bottom: 18px;
+    width: 100%;
 }
 
 .footerSocial a {
@@ -136,16 +177,25 @@ COLUNAS GERAIS
     color: #bdbdbd;
     font-size: 14px;
     line-height: 1.6;
+    text-align: left;
 }
 
 /* Pagamentos */
 .paymentItem {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     gap: 12px;
     color: #cfcfcf;
     font-size: 15px;
     margin-bottom: 14px;
+    width: 100%;
+    text-align: left;
+}
+
+.paymentItem span {
+    text-align: left;
+    line-height: 1.3;
 }
 
 .paymentItem svg {
@@ -158,7 +208,7 @@ COLUNAS GERAIS
 RESPONSIVO
 ========================*/
 
-@media (max-width: 1200px) {
+@media (max-width: 1300px) {
     .footerContainer {
         grid-template-columns: repeat(2, 1fr);
         gap: 40px;
@@ -175,6 +225,13 @@ RESPONSIVO
         padding: 40px 25px;
         text-align: center;
         justify-items: center;
+    }
+    .footerColumn {
+        align-items: center;
+        text-align: center;
+    }
+    .footerItem, .paymentItem, .footerItemStatic {
+        justify-content: center;
     }
     .footerLine {
         margin: 0 auto 20px auto;
@@ -288,20 +345,7 @@ SITE / EMAIL COLUMN (DOURADO, CENTRALIZADO E SEM FOCUS OUTLINE)
     line-height: 1.6;
     color: #bdbdbd;
     font-size: 15px;
-}
-
-/*=========================================================
-WHATSAPP CLICÁVEL
-=========================================================*/
-
-.footerItem a {
-    color: #cfcfcf;
-    text-decoration: none;
-    transition: .35s;
-}
-
-.footerItem a:hover {
-    color: #E7BD42;
+    text-align: center;
 }
 
 /*=========================================================
