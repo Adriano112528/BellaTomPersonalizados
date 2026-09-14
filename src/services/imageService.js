@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3001/api/images";
+const API_URL = "https://bellatompersonalizados.onrender.com/api/images";
 
 export async function uploadImage(file) {
   const formData = new FormData();

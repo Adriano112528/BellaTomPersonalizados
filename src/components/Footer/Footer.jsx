@@ -63,8 +63,8 @@ export default function Footer() {
     async function carregarDados() {
       try {
         const [respostaContato, respostaRedes] = await Promise.all([
-          fetch("http://localhost:3001/api/contato"),
-          fetch("http://localhost:3001/api/redes-sociais"),
+          fetch("https://bellatompersonalizados.onrender.com/api/contato"),
+          fetch("https://bellatompersonalizados.onrender.com/api/redes-sociais"),
         ]);
 
         if (respostaContato.ok) {

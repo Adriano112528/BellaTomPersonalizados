@@ -47,7 +47,7 @@ export default function Galeria() {
         setCarregando(true);
         setErro("");
 
-        const resposta = await fetch("http://localhost:3001/api/galeria");
+        const resposta = await fetch("https://bellatompersonalizados.onrender.com/api/galeria");
 
         if (!resposta.ok) {
           throw new Error("Erro ao buscar galeria.");

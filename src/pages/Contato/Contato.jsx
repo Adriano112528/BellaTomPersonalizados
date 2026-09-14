@@ -25,7 +25,7 @@ export default function Contato() {
     async function carregarContato() {
       try {
         const resposta = await fetch(
-          "http://localhost:3001/api/contato"
+          "https://bellatompersonalizados.onrender.com/api/contato"
         );
 
         if (!resposta.ok) {

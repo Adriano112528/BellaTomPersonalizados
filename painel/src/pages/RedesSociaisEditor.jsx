@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import "./RedesSociaisEditor.css";
 
-const API_URL = "http://localhost:3001/api/redes-sociais";
+const API_URL = "https://bellatompersonalizados.onrender.com/api/redes-sociais";
 
 function RedesSociaisEditor() {
   const navigate = useNavigate();

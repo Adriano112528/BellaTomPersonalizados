@@ -28,7 +28,7 @@ export default function ContatoEditor() {
         setErro("");
 
         const resposta = await fetch(
-          "http://localhost:3001/api/contato"
+          "https://bellatompersonalizados.onrender.com/api/contato"
         );
 
         if (!resposta.ok) {
@@ -78,7 +78,7 @@ export default function ContatoEditor() {
       setErro("");
 
       const resposta = await fetch(
-        "http://localhost:3001/api/contato",
+        "https://bellatompersonalizados.onrender.com/api/contato",
         {
           method: "PUT",
           headers: {
