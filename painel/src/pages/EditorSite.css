@@ -1,0 +1,845 @@
+/* =========================================================
+   BELLA TOM
+   PAINEL MASTER
+   EDITOR DO SITE
+   PREMIUM DARK / GOLD
+   ========================================================= */
+
+
+/* =========================================================
+   PÁGINA
+   ========================================================= */
+
+.editor-page {
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    padding: 42px 40px 70px;
+
+    box-sizing: border-box;
+
+    color: #ffffff;
+
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.editor-header {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 22px;
+
+    margin-bottom: 38px;
+
+    position: relative;
+
+}
+
+
+/* =========================================================
+   ÍCONE DO HEADER
+   ========================================================= */
+
+.editor-header-icon {
+
+    width: 78px;
+
+    height: 78px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #242424,
+            #101010
+        );
+
+    border: 1px solid #303030;
+
+    color: #d6b54a;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.04),
+        0 10px 30px rgba(0,0,0,.30);
+
+}
+
+
+/* =========================================================
+   TEXTO HEADER
+   ========================================================= */
+
+.editor-header-content {
+
+    flex: 1;
+
+}
+
+.editor-header-content h1 {
+
+    margin: 0;
+
+    color: #ffffff !important;
+
+    font-size: 46px;
+
+    line-height: 1;
+
+    font-weight: 850;
+
+    letter-spacing: -1.5px;
+
+}
+
+.editor-header-content p {
+
+    margin: 12px 0 0;
+
+    color: #9e9e9e !important;
+
+    font-size: 18px;
+
+    line-height: 1.4;
+
+}
+
+
+/* =========================================================
+   BADGE HEADER
+   ========================================================= */
+
+.editor-header-badge {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 14px 20px;
+
+    min-width: 220px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(37,37,37,.95),
+            rgba(20,20,20,.95)
+        );
+
+    border: 1px solid #3a3a3a;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.25);
+
+    color: #d6b54a;
+
+}
+
+.editor-header-badge strong {
+
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+}
+
+.editor-header-badge span {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: #929292;
+
+    font-size: 13px;
+
+}
+
+
+/* =========================================================
+   GRID
+   ========================================================= */
+
+.editor-grid {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 24px;
+
+    align-items: stretch;
+
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.editor-card {
+
+    position: relative;
+
+    min-height: 350px;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+
+    border-radius: 24px;
+
+    background-color: #1a1a1a;
+
+    background-image: var(--card-image);
+
+    background-size: cover;
+
+    background-position: center;
+
+    border: 1px solid #353535;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.25);
+
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+
+}
+
+
+/* =========================================================
+   OVERLAY
+   ========================================================= */
+
+.card-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(10,10,10,.38) 0%,
+            rgba(10,10,10,.58) 40%,
+            rgba(10,10,10,.94) 100%
+        );
+
+    transition: background .35s ease;
+
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.editor-card:hover {
+
+    transform: translateY(-7px);
+
+    border-color: #555555;
+
+    box-shadow:
+        0 25px 50px rgba(0,0,0,.45);
+
+}
+
+.editor-card:hover .card-overlay {
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(10,10,10,.25) 0%,
+            rgba(10,10,10,.55) 42%,
+            rgba(10,10,10,.94) 100%
+        );
+
+}
+
+
+/* =========================================================
+   CARD PRINCIPAL
+   ========================================================= */
+
+.editor-card.featured {
+
+    border: 2px solid #d6b54a;
+
+    box-shadow:
+        0 0 0 1px rgba(214,181,74,.18),
+        0 15px 45px rgba(214,181,74,.13);
+
+}
+
+.editor-card.featured:hover {
+
+    border-color: #f0d05b;
+
+    box-shadow:
+        0 0 0 1px rgba(214,181,74,.30),
+        0 25px 55px rgba(214,181,74,.20);
+
+}
+
+
+/* =========================================================
+   CONTEÚDO
+   ========================================================= */
+
+.editor-card-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    height: 100%;
+
+    min-height: 350px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    padding: 30px 26px 24px;
+
+    box-sizing: border-box;
+
+}
+
+
+/* =========================================================
+   ÍCONE
+   ========================================================= */
+
+.editor-icon {
+
+    width: 74px;
+
+    height: 74px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 19px;
+
+    background:
+        rgba(25,25,25,.88);
+
+    border: 1px solid rgba(255,255,255,.16);
+
+    color: #d6b54a;
+
+    backdrop-filter: blur(8px);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.25);
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        background .3s ease;
+
+}
+
+.editor-card:hover .editor-icon {
+
+    transform: translateY(-3px);
+
+    border-color: #d6b54a;
+
+    background:
+        rgba(25,25,25,.95);
+
+}
+
+.editor-card.featured .editor-icon {
+
+    border-color:
+        rgba(214,181,74,.65);
+
+    box-shadow:
+        0 0 20px rgba(214,181,74,.12);
+
+}
+
+
+/* =========================================================
+   TAG PRINCIPAL
+   ========================================================= */
+
+.featured-tag {
+
+    position: absolute;
+
+    top: 32px;
+
+    right: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    color: #d6b54a;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    letter-spacing: .8px;
+
+    text-transform: uppercase;
+
+}
+
+.featured-tag span {
+
+    font-size: 18px;
+
+}
+
+
+/* =========================================================
+   TÍTULO
+   ========================================================= */
+
+.editor-card h2 {
+
+    margin:
+
+        auto 0 10px;
+
+    color: #ffffff !important;
+
+    font-size: 25px;
+
+    line-height: 1.15;
+
+    font-weight: 850;
+
+    letter-spacing: -.3px;
+
+    text-shadow:
+        0 2px 10px rgba(0,0,0,.50);
+
+}
+
+
+/* =========================================================
+   DESCRIÇÃO
+   ========================================================= */
+
+.editor-card p {
+
+    margin: 0;
+
+    max-width: 95%;
+
+    color: #c3c3c3 !important;
+
+    font-size: 16px;
+
+    line-height: 1.55;
+
+    text-shadow:
+        0 2px 8px rgba(0,0,0,.55);
+
+}
+
+
+/* =========================================================
+   LINHA DA SETA
+   ========================================================= */
+
+.card-action-row {
+
+    position: absolute;
+
+    right: 25px;
+
+    bottom: 89px;
+
+}
+
+.card-action-arrow {
+
+    width: 38px;
+
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.10);
+
+    border: 1px solid rgba(255,255,255,.10);
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        border-color .25s ease;
+
+}
+
+.card-action-arrow:hover {
+
+    transform: translateX(4px);
+
+    background: #d6b54a;
+
+    border-color: #d6b54a;
+
+    color: #111111;
+
+}
+
+.card-action-arrow.locked {
+
+    color: #bdbdbd;
+
+    cursor: default;
+
+}
+
+
+/* =========================================================
+   BOTÃO
+   ========================================================= */
+
+.module-button {
+
+    width: 100%;
+
+    height: 56px;
+
+    margin-top: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 19px;
+
+    box-sizing: border-box;
+
+    border-radius: 15px;
+
+    background: #d6b54a;
+
+    color: #111111 !important;
+
+    text-decoration: none;
+
+    font-size: 16px;
+
+    font-weight: 850;
+
+    border: 1px solid #d6b54a;
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        box-shadow .25s ease;
+
+}
+
+.module-button:hover {
+
+    transform: translateY(-2px);
+
+    background: #e8c75a;
+
+    border-color: #e8c75a;
+
+    box-shadow:
+        0 10px 25px rgba(214,181,74,.28);
+
+}
+
+
+/* =========================================================
+   BOTÃO DESABILITADO
+   ========================================================= */
+
+.module-button.disabled {
+
+    background:
+        rgba(55,55,55,.85);
+
+    border-color:
+        rgba(255,255,255,.08);
+
+    color: #d2d2d2 !important;
+
+    cursor: default;
+
+}
+
+.module-button.disabled:hover {
+
+    transform: none;
+
+    box-shadow: none;
+
+}
+
+
+/* =========================================================
+   CARDS BLOQUEADOS
+   ========================================================= */
+
+.disabled-card {
+
+    filter: saturate(.72);
+
+}
+
+.disabled-card:hover {
+
+    filter: saturate(.95);
+
+}
+
+
+/* =========================================================
+   EFEITO DE LUZ NO CARD PRINCIPAL
+   ========================================================= */
+
+.editor-card.featured::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+
+    height: 180px;
+
+    top: -90px;
+
+    left: -70px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(214,181,74,.10);
+
+    filter: blur(35px);
+
+    pointer-events: none;
+
+    z-index: 1;
+
+}
+
+
+/* =========================================================
+   RESPONSIVO
+   ========================================================= */
+
+@media (max-width: 1350px) {
+
+    .editor-grid {
+
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+    }
+
+}
+
+
+@media (max-width: 1050px) {
+
+    .editor-header {
+
+        flex-wrap: wrap;
+
+    }
+
+    .editor-header-badge {
+
+        display: none;
+
+    }
+
+    .editor-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .editor-page {
+
+        padding:
+            25px 18px 45px;
+
+    }
+
+    .editor-header {
+
+        align-items: flex-start;
+
+    }
+
+    .editor-header-icon {
+
+        width: 62px;
+
+        height: 62px;
+
+        border-radius: 18px;
+
+    }
+
+    .editor-header-content h1 {
+
+        font-size: 34px;
+
+    }
+
+    .editor-header-content p {
+
+        font-size: 15px;
+
+    }
+
+    .editor-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .editor-card {
+
+        min-height: 340px;
+
+    }
+
+    .editor-card-content {
+
+        min-height: 340px;
+
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .editor-page {
+
+        padding:
+            20px 14px 40px;
+
+    }
+
+    .editor-header {
+
+        gap: 14px;
+
+        margin-bottom: 28px;
+
+    }
+
+    .editor-header-icon {
+
+        width: 55px;
+
+        height: 55px;
+
+    }
+
+    .editor-header-content h1 {
+
+        font-size: 29px;
+
+    }
+
+    .editor-header-content p {
+
+        font-size: 14px;
+
+    }
+
+    .editor-card-content {
+
+        padding:
+            24px 20px 20px;
+
+    }
+
+    .editor-icon {
+
+        width: 66px;
+
+        height: 66px;
+
+    }
+
+    .editor-card h2 {
+
+        font-size: 23px;
+
+    }
+
+}

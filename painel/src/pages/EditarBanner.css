@@ -1,0 +1,220 @@
+.editarBanner{
+    padding:40px;
+    color:#fff;
+}
+
+.editarHeader{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:35px;
+}
+
+.editarHeader h1{
+    font-size:42px;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+.editarHeader p{
+    color:#9ca3af;
+    font-size:18px;
+}
+
+.editarGrid{
+    display:grid;
+    grid-template-columns:380px 1fr;
+    gap:30px;
+}
+
+.previewCard,
+.formCard{
+
+    background:#1d1d1d;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:22px;
+
+    padding:28px;
+
+}
+
+.previewCard h2,
+.formCard h2{
+
+    margin-bottom:25px;
+
+}
+
+.previewImage{
+
+    width:100%;
+    height:260px;
+
+    border-radius:18px;
+
+    background:#2b2b2b;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:#888;
+
+    font-size:20px;
+
+    margin-bottom:25px;
+
+}
+
+.upload{
+
+    width:100%;
+
+    height:54px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#d9b545;
+
+    color:#111;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.upload:hover{
+
+    background:#e7c75f;
+
+}
+
+.formCard{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.formCard label{
+
+    margin-top:16px;
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+    color:#d7d7d7;
+
+}
+
+.formCard input,
+.formCard textarea{
+
+    width:100%;
+
+    background:#2b2b2b;
+
+    border:1px solid #3b3b3b;
+
+    border-radius:12px;
+
+    padding:14px;
+
+    color:white;
+
+    font-size:16px;
+
+    resize:none;
+
+    outline:none;
+
+}
+
+.formCard input:focus,
+.formCard textarea:focus{
+
+    border-color:#d9b545;
+
+}
+
+.salvar{
+
+    margin-top:30px;
+
+    height:60px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#d9b545;
+
+    color:#111;
+
+    font-size:20px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.salvar:hover{
+
+    background:#e7c75f;
+
+}
+
+@media(max-width:1100px){
+
+.editarGrid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+.previewBanner{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    border-radius:18px;
+
+    display:block;
+
+}
+.voltar{
+    width:100%;
+    height:52px;
+    margin-top:16px;
+    border:none;
+    border-radius:14px;
+    background:#2b2b2b;
+    color:#fff;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.voltar:hover{
+    background:#3a3a3a;
+    border:1px solid #d6b54a;
+}

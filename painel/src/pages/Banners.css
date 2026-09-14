@@ -1,0 +1,632 @@
+/* =========================================================
+   BELLA TOM - BANNERS
+   Layout original + correção das cores
+   ========================================================= */
+
+.banners-page {
+    padding: 40px;
+    width: 100%;
+    box-sizing: border-box;
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    gap: 20px;
+}
+
+.page-header h1 {
+    color: #ffffff !important;
+    font-size: 40px;
+    font-weight: 800;
+    margin: 0 0 8px 0;
+}
+
+.page-header p {
+    color: #9b9b9b !important;
+    font-size: 17px;
+    margin: 0;
+}
+
+
+/* =========================================================
+   VOLTAR
+   ========================================================= */
+
+.voltar-editor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 22px;
+    border-radius: 14px;
+    background: #00c3ff !important;
+    color: #08111f !important;
+    text-decoration: none !important;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.voltar-editor:hover {
+    background: #00a8dc !important;
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 195, 255, 0.3);
+}
+
+
+/* =========================================================
+   LISTA
+   ========================================================= */
+
+.banner-list {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.banner-card {
+    width: 100%;
+
+    background: #1c1c1c;
+
+    border: 1px solid #2f2f2f;
+
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    transition: .35s;
+
+    color: #ffffff !important;
+
+    box-sizing: border-box;
+}
+
+.banner-card:hover {
+    border-color: #d6b54a;
+
+    box-shadow:
+        0 10px 30px rgba(214,181,74,.15);
+}
+
+.banner-card.aberto {
+    border-color: #d6b54a;
+
+    box-shadow:
+        0 0 0 1px rgba(214,181,74,.30),
+        0 20px 45px rgba(214,181,74,.12);
+}
+
+
+/* =========================================================
+   TOPO DO CARD
+   ========================================================= */
+
+.banner-top {
+    width: 100%;
+
+    display: flex !important;
+
+    flex-direction: row !important;
+
+    align-items: center;
+
+    gap: 30px;
+
+    padding: 25px;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   IMAGEM
+   ========================================================= */
+
+.banner-image {
+    width: 380px;
+
+    height: 210px;
+
+    min-width: 380px;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    background: #2a2a2a;
+
+    border: 1px solid #333333;
+
+    flex-shrink: 0;
+}
+
+.banner-thumb {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: .35s;
+}
+
+.banner-card:hover .banner-thumb {
+    transform: scale(1.03);
+}
+
+
+/* =========================================================
+   CONTEÚDO
+   ========================================================= */
+
+.banner-content {
+    flex: 1;
+
+    min-width: 0;
+
+    color: #ffffff !important;
+}
+
+.banner-number {
+    display: inline-block;
+
+    color: #d6b54a !important;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 8px;
+}
+
+.banner-title {
+    color: #ffffff !important;
+
+    font-size: 34px;
+
+    font-weight: 800;
+
+    margin: 0 0 12px 0;
+}
+
+.banner-description {
+    color: #a9a9a9 !important;
+
+    font-size: 18px;
+
+    line-height: 1.6;
+
+    margin: 0 0 25px 0;
+}
+
+
+/* =========================================================
+   BOTÃO EDITAR
+   ========================================================= */
+
+.editar-button {
+    width: 220px;
+
+    height: 52px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background: #d6b54a !important;
+
+    color: #111111 !important;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.editar-button:hover {
+    background: #e7c75b !important;
+
+    color: #111111 !important;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   EDITOR ABERTO
+   ========================================================= */
+
+.banner-editor {
+    width: 100%;
+
+    display: flex !important;
+
+    flex-direction: row !important;
+
+    gap: 40px;
+
+    margin-top: 0;
+
+    padding: 0 25px 30px;
+
+    box-sizing: border-box;
+
+    align-items: flex-start;
+}
+
+
+/* =========================================================
+   COLUNA ESQUERDA
+   ========================================================= */
+
+.editor-left {
+    width: 360px;
+
+    min-width: 360px;
+
+    flex-shrink: 0;
+}
+
+.editor-left img,
+.preview-image {
+    width: 100%;
+
+    height: 220px;
+
+    object-fit: cover;
+
+    display: block;
+
+    border-radius: 16px;
+
+    border: 1px solid #333333;
+
+    background: #202020;
+}
+
+
+/* =========================================================
+   TROCAR IMAGEM
+   ========================================================= */
+
+.upload-button,
+.trocar-imagem {
+    width: 100%;
+
+    height: 52px;
+
+    margin-top: 18px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #d6b54a !important;
+
+    color: #111111 !important;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.upload-button:hover,
+.trocar-imagem:hover {
+    background: #e7c85d !important;
+
+    color: #111111 !important;
+
+    transform: translateY(-2px);
+}
+
+.upload-button:disabled,
+.trocar-imagem:disabled {
+    opacity: .6;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   COLUNA DIREITA
+   ========================================================= */
+
+.editor-right {
+    flex: 1;
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   CAMPOS
+   ========================================================= */
+
+.campo {
+    width: 100%;
+}
+
+.editor-right label,
+.campo label {
+    display: block;
+
+    color: #d6b54a !important;
+
+    margin-bottom: 8px;
+
+    margin-top: 18px;
+
+    font-weight: 700;
+
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
+
+.editor-right input,
+.editor-right textarea {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    background: #2b2b2b !important;
+
+    color: #ffffff !important;
+
+    border: 1px solid #3b3b3b;
+
+    border-radius: 12px;
+
+    padding: 16px;
+
+    font-size: 16px;
+
+    font-family: inherit;
+
+    outline: none;
+
+    -webkit-text-fill-color: #ffffff !important;
+
+    transition: .3s;
+}
+
+.editor-right input {
+    height: 60px;
+}
+
+.editor-right textarea {
+    resize: vertical;
+
+    min-height: 110px;
+}
+
+.editor-right input:focus,
+.editor-right textarea:focus {
+    border-color: #d6b54a;
+
+    box-shadow:
+        0 0 0 2px rgba(214,181,74,.10);
+}
+
+.editor-right input::placeholder,
+.editor-right textarea::placeholder {
+    color: #888888 !important;
+}
+
+
+/* =========================================================
+   DUAS COLUNAS
+   ========================================================= */
+
+.linha {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 22px;
+}
+
+
+/* =========================================================
+   SALVAR
+   ========================================================= */
+
+.salvar-button,
+.salvar-banner {
+    width: 240px;
+
+    height: 56px;
+
+    margin-top: 35px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background: #d6b54a !important;
+
+    color: #111111 !important;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.salvar-button:hover,
+.salvar-banner:hover {
+    background: #e7c85d !important;
+
+    color: #111111 !important;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px rgba(214,181,74,.35);
+}
+
+
+/* =========================================================
+   PROTEÇÃO CONTRA CORES DO SISTEMA
+   ========================================================= */
+
+.banner-card h1,
+.banner-card h2,
+.banner-card h3,
+.banner-card p,
+.banner-card span {
+    color: inherit;
+}
+
+.banner-card .banner-number {
+    color: #d6b54a !important;
+}
+
+.banner-card .banner-title {
+    color: #ffffff !important;
+}
+
+.banner-card .banner-description {
+    color: #a9a9a9 !important;
+}
+
+
+/* =========================================================
+   RESPONSIVO
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    .banner-top {
+        flex-direction: column !important;
+
+        align-items: flex-start;
+    }
+
+    .banner-image {
+        width: 100%;
+
+        min-width: 100%;
+
+        height: 260px;
+    }
+
+    .banner-editor {
+        flex-direction: column !important;
+    }
+
+    .editor-left {
+        width: 100%;
+
+        min-width: 100%;
+    }
+
+    .preview-image {
+        height: 260px;
+    }
+
+    .editor-right {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .banners-page {
+        padding: 20px;
+    }
+
+    .page-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .page-header h1 {
+        font-size: 32px;
+    }
+
+    .banner-title {
+        font-size: 28px;
+    }
+
+    .banner-description {
+        font-size: 16px;
+    }
+
+    .linha {
+        grid-template-columns: 1fr;
+    }
+
+    .editar-button,
+    .salvar-button,
+    .salvar-banner,
+    .upload-button,
+    .trocar-imagem,
+    .voltar-editor {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 450px) {
+
+    .banners-page {
+        padding: 15px;
+    }
+
+    .banner-top {
+        padding: 18px;
+    }
+
+    .banner-editor {
+        padding: 0 18px 20px;
+    }
+
+    .banner-image {
+        height: 210px;
+    }
+
+    .preview-image {
+        height: 210px;
+    }
+}

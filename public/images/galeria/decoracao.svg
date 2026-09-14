@@ -1,0 +1,16 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800">
+  <rect width="1200" height="800" fill="#4f9d92"/>
+  <rect x="210" y="150" width="780" height="500" rx="35" fill="#faffff"/>
+  <circle cx="600" cy="330" r="105" fill="#4f9d92"/>
+  <path d="M540 330 L585 375 L675 275"
+        fill="none" stroke="#ffffff" stroke-width="25"
+        stroke-linecap="round"/>
+  <text x="600" y="510" text-anchor="middle"
+        font-size="58" font-family="Arial" fill="#35756d">
+    Decoração
+  </text>
+  <text x="600" y="575" text-anchor="middle"
+        font-size="32" font-family="Arial" fill="#35756d">
+    Feita com carinho
+  </text>
+</svg>

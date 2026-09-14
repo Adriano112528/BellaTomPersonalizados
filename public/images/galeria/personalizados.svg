@@ -1,0 +1,13 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800">
+  <rect width="1200" height="800" fill="#c18b45"/>
+  <rect x="330" y="180" width="540" height="420" rx="30" fill="#fffaf0"/>
+  <path d="M600 240 L690 400 L600 560 L510 400 Z" fill="#c18b45"/>
+  <text x="600" y="390" text-anchor="middle"
+        font-size="46" font-family="Arial" fill="#fffaf0">
+    ARS
+  </text>
+  <text x="600" y="680" text-anchor="middle"
+        font-size="55" font-family="Arial" fill="#fffaf0">
+    Personalizados
+  </text>
+</svg>

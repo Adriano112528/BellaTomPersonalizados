@@ -1,5 +1,7 @@
 import "./FeaturedProducts.css";
 
+import { useNavigate } from "react-router-dom";
+
 import {
   FaWhatsapp,
   FaMugHot,
@@ -51,9 +53,14 @@ const products = [
 ];
 
 export default function FeaturedProducts() {
+  const navigate = useNavigate();
+
+  function abrirProdutos() {
+    navigate("/produtos");
+  }
+
   return (
     <section className="featuredProducts">
-
       <div className="featuredTitle">
         <h2>Nossos Trabalhos</h2>
         <p>Encontre o presente perfeito para cada ocasião</p>
@@ -61,15 +68,9 @@ export default function FeaturedProducts() {
 
       <div className="productsGrid">
         {products.map((item, index) => (
-          <div
-            className="productCard"
-            key={index}
-          >
+          <div className="productCard" key={index}>
             <div className="productImage">
-              <img
-                src={item.image}
-                alt={item.title}
-              />
+              <img src={item.image} alt={item.title} />
             </div>
 
             <div className="productInfo">
@@ -78,7 +79,7 @@ export default function FeaturedProducts() {
                 {item.title}
               </h3>
 
-              <button>
+              <button type="button">
                 <FaWhatsapp />
                 Faça seu orçamento
               </button>
@@ -88,11 +89,10 @@ export default function FeaturedProducts() {
       </div>
 
       <div className="viewAll">
-        <button>
+        <button type="button" onClick={abrirProdutos}>
           Ver todos os produtos →
         </button>
       </div>
-
     </section>
   );
 }
