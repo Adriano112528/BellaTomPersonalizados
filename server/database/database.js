@@ -31,6 +31,90 @@ db.exec(`
 `);
 
 // ========================================
+// ESTRUTURA DO ESTOQUE
+// ========================================
+
+function colunaExiste(tabela, coluna) {
+  const colunas = db
+    .prepare(`PRAGMA table_info(${tabela})`)
+    .all();
+
+  return colunas.some(
+    (item) => item.name === coluna
+  );
+}
+
+// Código de barras
+if (!colunaExiste("produtos", "codigo_barras")) {
+  db.exec(`
+    ALTER TABLE produtos
+    ADD COLUMN codigo_barras TEXT DEFAULT '';
+  `);
+
+  console.log("✅ Coluna codigo_barras criada.");
+}
+
+// Estoque atual
+if (!colunaExiste("produtos", "estoque")) {
+  db.exec(`
+    ALTER TABLE produtos
+    ADD COLUMN estoque INTEGER DEFAULT 0;
+  `);
+
+  console.log("✅ Coluna estoque criada.");
+}
+
+// Estoque mínimo
+if (!colunaExiste("produtos", "estoque_minimo")) {
+  db.exec(`
+    ALTER TABLE produtos
+    ADD COLUMN estoque_minimo INTEGER DEFAULT 0;
+  `);
+
+  console.log("✅ Coluna estoque_minimo criada.");
+}
+
+// ========================================
+// HISTÓRICO DE MOVIMENTAÇÕES
+// ========================================
+
+db.exec(`
+  CREATE TABLE IF NOT EXISTS movimentacoes_estoque (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+    produto_id INTEGER NOT NULL,
+
+    tipo TEXT NOT NULL
+      CHECK (
+        tipo IN (
+          'ENTRADA',
+          'SAIDA',
+          'AJUSTE'
+        )
+      ),
+
+    quantidade INTEGER NOT NULL,
+
+    estoque_anterior INTEGER NOT NULL DEFAULT 0,
+
+    estoque_posterior INTEGER NOT NULL DEFAULT 0,
+
+    motivo TEXT DEFAULT '',
+
+    pedido_id INTEGER DEFAULT NULL,
+
+    criado_em DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (produto_id)
+      REFERENCES produtos(id)
+      ON DELETE RESTRICT
+  );
+`);
+
+console.log("✅ Estrutura de estoque pronta.");
+console.log("✅ Histórico de estoque pronto.");
+
+// ========================================
 // TABELA DE REDES SOCIAIS
 // ========================================
 

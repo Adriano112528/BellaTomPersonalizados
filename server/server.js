@@ -8,6 +8,7 @@ const produtoRoutes = require("./routes/produtoRoutes");
 const galeriaRoutes = require("./routes/galeriaRoutes");
 const contatoRoutes = require("./routes/contatoRoutes");
 const redesSociaisRoutes = require("./routes/redesSociaisRoutes");
+const estoqueRoutes = require("./routes/estoqueRoutes");
 
 const db = require("./database/database");
 
@@ -60,6 +61,8 @@ app.use("/api/galeria", galeriaRoutes);
 app.use("/api/contato", contatoRoutes);
 
 app.use("/api/redes-sociais", redesSociaisRoutes);
+
+app.use("/api/estoque", estoqueRoutes);
 
 // ========================================
 // ROTA PRINCIPAL
