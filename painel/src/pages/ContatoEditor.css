@@ -12,36 +12,43 @@
 .contato-editor-eyebrow {
   display: inline-block;
   margin-bottom: 10px;
-  color: #d9b84f;
+  color: #f9a8d4;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 .contato-editor-header h1 {
   margin: 0;
+  color: #ffffff;
   font-size: 34px;
   font-weight: 800;
+  letter-spacing: -0.8px;
 }
 
 .contato-editor-header p {
   margin: 10px 0 0;
-  color: #a9a9a9;
+  color: #a9a9b5;
   font-size: 15px;
+  line-height: 1.6;
 }
 
 .contato-editor-card {
   width: 100%;
   max-width: 1000px;
   padding: 30px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 22px;
-  background: linear-gradient(
-    145deg,
-    rgba(30, 30, 30, 0.96),
-    rgba(14, 14, 14, 0.98)
-  );
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(39, 31, 40, 0.98),
+      rgba(19, 19, 27, 0.99)
+    );
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
 }
 
 .contato-editor-section {
@@ -53,11 +60,12 @@
   color: #ffffff;
   font-size: 21px;
   font-weight: 800;
+  letter-spacing: -0.3px;
 }
 
 .contato-editor-section p {
   margin: 0;
-  color: #999999;
+  color: #9999a8;
   font-size: 14px;
   line-height: 1.6;
 }
@@ -79,7 +87,7 @@
 }
 
 .contato-editor-field label {
-  color: #dddddd;
+  color: #dedee8;
   font-size: 13px;
   font-weight: 700;
 }
@@ -88,32 +96,40 @@
   width: 100%;
   min-height: 48px;
   padding: 0 15px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 11px;
   outline: none;
-  background: #101010;
+  background: #111119;
   color: #ffffff;
   font-family: inherit;
   font-size: 14px;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.contato-editor-field input:hover {
+  border-color: rgba(249, 168, 212, 0.35);
 }
 
 .contato-editor-field input::placeholder {
-  color: #666666;
+  color: #666675;
 }
 
 .contato-editor-field input:focus {
-  border-color: #d9b84f;
-  box-shadow: 0 0 0 3px rgba(217, 184, 79, 0.12);
+  border-color: #f472b6;
+  background: #17131b;
+  box-shadow: 0 0 0 3px rgba(244, 114, 182, 0.13);
 }
 
 .contato-editor-message {
   margin-top: 24px;
   padding: 14px 16px;
-  border: 1px solid rgba(217, 184, 79, 0.35);
-  border-radius: 10px;
-  background: rgba(217, 184, 79, 0.09);
-  color: #e8cb69;
+  border: 1px solid rgba(244, 114, 182, 0.3);
+  border-radius: 11px;
+  background: rgba(244, 114, 182, 0.08);
+  color: #f9b6d9;
   font-size: 14px;
   line-height: 1.5;
 }
@@ -128,19 +144,55 @@
   min-height: 48px;
   padding: 0 26px;
   border: none;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #e3c354, #c9a83d);
-  color: #171717;
+  border-radius: 11px;
+  background: linear-gradient(135deg, #f9a8d4, #ec4899);
+  color: #24111c;
   cursor: pointer;
   font-family: inherit;
   font-size: 14px;
   font-weight: 800;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 8px 22px rgba(236, 72, 153, 0.16);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
 }
 
 .contato-editor-actions button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(217, 184, 79, 0.22);
+  filter: brightness(1.05);
+  box-shadow: 0 12px 28px rgba(236, 72, 153, 0.26);
+}
+
+.contato-editor-actions button:active {
+  transform: translateY(0);
+}
+
+.contato-editor-back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding: 10px 18px;
+  border: 1px solid rgba(249, 168, 212, 0.3);
+  border-radius: 10px;
+  background: rgba(244, 114, 182, 0.08);
+  color: #f9a8d4;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.contato-editor-back-button:hover {
+  border-color: #f472b6;
+  background: linear-gradient(135deg, #f9a8d4, #ec4899);
+  color: #24111c;
+  transform: translateX(-3px);
 }
 
 @media (max-width: 800px) {
@@ -182,25 +234,4 @@
   .contato-editor-actions button {
     width: 100%;
   }
-}
-.contato-editor-back-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 24px;
-  padding: 10px 18px;
-  border: 1px solid rgba(0, 195, 255, 0.35);
-  border-radius: 10px;
-  background: rgba(0, 195, 255, 0.08);
-  color: #00c3ff;
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.contato-editor-back-button:hover {
-  background: #00c3ff;
-  color: #08111f;
-  transform: translateX(-3px);
 }

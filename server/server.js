@@ -4,12 +4,18 @@ const express = require("express");
 const cors = require("cors");
 
 const imageRoutes = require("./routes/imageRoutes");
-const produtoRoutes = require("./routes/produtoRoutes");
+
+// PRODUTOS AGORA USA POSTGRESQL
+const produtoRoutes = require("./routes/produtoRoutesPostgres");
+
 const galeriaRoutes = require("./routes/galeriaRoutes");
 const contatoRoutes = require("./routes/contatoRoutes");
 const redesSociaisRoutes = require("./routes/redesSociaisRoutes");
-const estoqueRoutes = require("./routes/estoqueRoutes");
 
+// ESTOQUE AGORA USA POSTGRESQL
+const estoqueRoutes = require("./routes/estoqueRoutesPostgres");
+
+// SQLite ainda mantido para as partes que ainda utilizam o banco antigo
 const db = require("./database/database");
 
 const app = express();
@@ -71,13 +77,20 @@ app.use("/api/estoque", estoqueRoutes);
 app.get("/", (req, res) => {
   res.json({
     status: "Servidor Online",
+
     cloudinary: process.env.CLOUDINARY_CLOUD_NAME
       ? "OK"
       : "NÃO CONFIGURADO",
+
     openai: process.env.OPENAI_API_KEY
       ? "OK"
       : "ERRO",
+
     sqlite: db ? "OK" : "ERRO",
+
+    postgresql: process.env.DATABASE_URL
+      ? "OK"
+      : "ERRO",
   });
 });
 

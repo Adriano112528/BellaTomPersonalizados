@@ -1,6 +1,6 @@
 const API_URL =
   import.meta.env.VITE_API_URL ||
-  "https://bellatompersonalizados.onrender.com";
+  "http://localhost:3001";
 
 /**
  * ========================================
@@ -59,10 +59,27 @@ export async function cadastrarProduto(produto) {
       preco: produto.preco || "",
       precoPromocional:
         produto.precoPromocional || null,
+
       ativo: produto.ativo ?? true,
+
       imagem: produto.imagem || "",
-      cloudinaryPublicId: produto.cloudinaryPublicId || "",
+      cloudinaryPublicId:
+        produto.cloudinaryPublicId || "",
+
+      codigoBarras:
+        produto.codigoBarras || "",
+
+      estoque:
+        Number(produto.estoque) || 0,
+
+      estoqueMinimo:
+        Number(produto.estoqueMinimo) || 0,
     };
+
+    console.log(
+      "📦 Dados enviados para cadastrar produto:",
+      dados
+    );
 
     const resposta = await fetch(
       `${API_URL}/api/produtos`,
@@ -89,14 +106,14 @@ export async function cadastrarProduto(produto) {
       await resposta.json();
 
     console.log(
-      "Produto cadastrado pela API:",
+      "✅ Produto cadastrado pela API:",
       produtoCriado
     );
 
     return produtoCriado;
   } catch (erro) {
     console.error(
-      "Erro ao cadastrar produto pela API:",
+      "❌ Erro ao cadastrar produto pela API:",
       erro
     );
 
@@ -123,10 +140,27 @@ export async function atualizarProduto(
       preco: produto.preco || "",
       precoPromocional:
         produto.precoPromocional || null,
+
       ativo: produto.ativo ?? true,
+
       imagem: produto.imagem || "",
-      cloudinaryPublicId: produto.cloudinaryPublicId || "",
+      cloudinaryPublicId:
+        produto.cloudinaryPublicId || "",
+
+      codigoBarras:
+        produto.codigoBarras || "",
+
+      estoque:
+        Number(produto.estoque) || 0,
+
+      estoqueMinimo:
+        Number(produto.estoqueMinimo) || 0,
     };
+
+    console.log(
+      "📦 Dados enviados para atualizar produto:",
+      dados
+    );
 
     const resposta = await fetch(
       `${API_URL}/api/produtos/${id}`,
@@ -153,14 +187,14 @@ export async function atualizarProduto(
       await resposta.json();
 
     console.log(
-      "Produto atualizado pela API:",
+      "✅ Produto atualizado pela API:",
       produtoAtualizado
     );
 
     return produtoAtualizado;
   } catch (erro) {
     console.error(
-      "Erro ao atualizar produto pela API:",
+      "❌ Erro ao atualizar produto pela API:",
       erro
     );
 

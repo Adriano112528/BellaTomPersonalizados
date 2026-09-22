@@ -7,15 +7,47 @@ import {
 } from "firebase/storage";
 
 export async function uploadBanner(arquivo) {
+  console.log("📤 INICIANDO UPLOAD");
+  console.log("📁 Arquivo:", arquivo.name);
+  console.log("📦 Tamanho:", arquivo.size);
+  console.log("📝 Tipo:", arquivo.type);
 
-  const nomeArquivo = `banners/${Date.now()}-${arquivo.name}`;
+  if (!arquivo) {
+    throw new Error("Nenhum arquivo selecionado.");
+  }
 
-  const referencia = ref(storage, nomeArquivo);
+  if (!arquivo.type.startsWith("image/")) {
+    throw new Error("O arquivo selecionado não é uma imagem.");
+  }
 
-  await uploadBytes(referencia, arquivo);
+  try {
+    const nomeArquivo = `banners/${Date.now()}-${arquivo.name}`;
+    console.log("📍 Caminho:", nomeArquivo);
 
-  const url = await getDownloadURL(referencia);
+    const referencia = ref(storage, nomeArquivo);
 
-  return url;
+    console.log("⏳ Enviando para Firebase Storage...");
 
+    const resultado = await uploadBytes(referencia, arquivo);
+
+    console.log("✅ UPLOAD CONCLUÍDO");
+    console.log(resultado);
+
+    console.log("🔗 Obtendo URL...");
+
+    const url = await getDownloadURL(referencia);
+
+    console.log("✅ URL OBTIDA:");
+    console.log(url);
+
+    return url;
+
+  } catch (erro) {
+    console.error("❌ ERRO NO STORAGE");
+    console.error("Código:", erro.code);
+    console.error("Mensagem:", erro.message);
+    console.error(erro);
+
+    throw erro;
+  }
 }

@@ -1,11 +1,11 @@
-const express = require("express");
+﻿const express = require("express");
 
 const router = express.Router();
 
 const db = require("../database/database");
 
 // ========================================
-// BUSCAR PRODUTO POR CÓDIGO DE BARRAS
+// BUSCAR PRODUTO POR CÃ“DIGO DE BARRAS
 // ========================================
 
 router.get("/buscar/:codigo", (req, res) => {
@@ -14,7 +14,7 @@ router.get("/buscar/:codigo", (req, res) => {
 
     if (!codigo) {
       return res.status(400).json({
-        erro: "Código de barras não informado.",
+        erro: "CÃ³digo de barras nÃ£o informado.",
       });
     }
 
@@ -41,14 +41,14 @@ router.get("/buscar/:codigo", (req, res) => {
 
     if (!produto) {
       return res.status(404).json({
-        erro: "Produto não encontrado.",
+        erro: "Produto nÃ£o encontrado.",
       });
     }
 
     res.json(produto);
   } catch (erro) {
     console.error(
-      "Erro ao buscar produto por código de barras:",
+      "Erro ao buscar produto por cÃ³digo de barras:",
       erro
     );
 
@@ -105,69 +105,78 @@ router.get("/", (req, res) => {
 router.post("/entrada", (req, res) => {
   try {
     const {
-      produtoId,
+      produtoId = null,
+      codigoBarras = "",
       quantidade,
-      motivo = "",
+      motivo = ""
     } = req.body;
 
-    const id = Number(produtoId);
-    const qtd = Number(quantidade);
+    const codigo = String(codigoBarras || "").trim();
 
-    if (!Number.isInteger(id)) {
-      return res.status(400).json({
-        erro: "Produto inválido.",
-      });
-    }
+    const idInformado =
+      produtoId === null ||
+      produtoId === undefined ||
+      produtoId === ""
+        ? null
+        : Number(produtoId);
+
+    const qtd = Number(quantidade);
 
     if (!Number.isInteger(qtd) || qtd <= 0) {
       return res.status(400).json({
-        erro: "A quantidade deve ser maior que zero.",
+        erro: "Quantidade inválida."
       });
     }
 
-    const produto = db
-      .prepare(`
-        SELECT id, nome, estoque
+    let produto = null;
+
+    if (codigo) {
+      produto = db.prepare(`
+        SELECT id, nome, estoque, codigo_barras
+        FROM produtos
+        WHERE codigo_barras = ?
+      `).get(codigo);
+    } else if (Number.isInteger(idInformado)) {
+      produto = db.prepare(`
+        SELECT id, nome, estoque, codigo_barras
         FROM produtos
         WHERE id = ?
-      `)
-      .get(id);
+      `).get(idInformado);
+    }
 
     if (!produto) {
       return res.status(404).json({
-        erro: "Produto não encontrado.",
+        erro: "Produto não encontrado."
       });
     }
 
     const estoqueAnterior = Number(produto.estoque || 0);
+    const estoquePosterior = estoqueAnterior + qtd;
 
-    const estoquePosterior =
-      estoqueAnterior + qtd;
+    const atualizar = db.prepare(`
+      UPDATE produtos
+      SET estoque = ?, atualizado_em = CURRENT_TIMESTAMP
+      WHERE id = ?
+    `);
 
-    const executarEntrada = db.transaction(() => {
-      db.prepare(`
-        UPDATE produtos
-        SET
-          estoque = ?,
-          atualizado_em = CURRENT_TIMESTAMP
-        WHERE id = ?
-      `).run(
-        estoquePosterior,
-        id
-      );
+    const registrar = db.prepare(`
+      INSERT INTO movimentacoes_estoque
+      (
+        produto_id,
+        tipo,
+        quantidade,
+        estoque_anterior,
+        estoque_posterior,
+        motivo
+      )
+      VALUES (?, 'ENTRADA', ?, ?, ?, ?)
+    `);
 
-      db.prepare(`
-        INSERT INTO movimentacoes_estoque (
-          produto_id,
-          tipo,
-          quantidade,
-          estoque_anterior,
-          estoque_posterior,
-          motivo
-        )
-        VALUES (?, 'ENTRADA', ?, ?, ?, ?)
-      `).run(
-        id,
+    const transacao = db.transaction(() => {
+      atualizar.run(estoquePosterior, produto.id);
+
+      registrar.run(
+        produto.id,
         qtd,
         estoqueAnterior,
         estoquePosterior,
@@ -175,34 +184,26 @@ router.post("/entrada", (req, res) => {
       );
     });
 
-    executarEntrada();
+    transacao();
 
-    res.json({
+    return res.json({
       sucesso: true,
-      mensagem: "Entrada registrada.",
-      produto: {
-        id: produto.id,
-        nome: produto.nome,
-        estoqueAnterior,
-        quantidade: qtd,
-        estoqueAtual: estoquePosterior,
-      },
+      produtoId: produto.id,
+      produto: produto.nome,
+      codigoBarras: produto.codigo_barras,
+      quantidade: qtd,
+      estoqueAnterior,
+      estoquePosterior
     });
-  } catch (erro) {
-    console.error(
-      "Erro ao registrar entrada:",
-      erro
-    );
 
-    res.status(500).json({
-      erro: "Erro ao registrar entrada.",
+  } catch (erro) {
+    console.error("Erro na entrada de estoque:", erro);
+
+    return res.status(500).json({
+      erro: "Erro ao registrar entrada de estoque."
     });
   }
 });
-
-// ========================================
-// SAÍDA DE ESTOQUE
-// ========================================
 
 router.post("/saida", (req, res) => {
   try {
@@ -218,7 +219,7 @@ router.post("/saida", (req, res) => {
 
     if (!Number.isInteger(id)) {
       return res.status(400).json({
-        erro: "Produto inválido.",
+        erro: "Produto invÃ¡lido.",
       });
     }
 
@@ -238,7 +239,7 @@ router.post("/saida", (req, res) => {
 
     if (!produto) {
       return res.status(404).json({
-        erro: "Produto não encontrado.",
+        erro: "Produto nÃ£o encontrado.",
       });
     }
 
@@ -292,7 +293,7 @@ router.post("/saida", (req, res) => {
 
     res.json({
       sucesso: true,
-      mensagem: "Saída registrada.",
+      mensagem: "SaÃ­da registrada.",
       produto: {
         id: produto.id,
         nome: produto.nome,
@@ -303,12 +304,12 @@ router.post("/saida", (req, res) => {
     });
   } catch (erro) {
     console.error(
-      "Erro ao registrar saída:",
+      "Erro ao registrar saÃ­da:",
       erro
     );
 
     res.status(500).json({
-      erro: "Erro ao registrar saída.",
+      erro: "Erro ao registrar saÃ­da.",
     });
   }
 });
@@ -330,13 +331,13 @@ router.post("/ajuste", (req, res) => {
 
     if (!Number.isInteger(id)) {
       return res.status(400).json({
-        erro: "Produto inválido.",
+        erro: "Produto invÃ¡lido.",
       });
     }
 
     if (!Number.isInteger(qtd) || qtd < 0) {
       return res.status(400).json({
-        erro: "Quantidade inválida.",
+        erro: "Quantidade invÃ¡lida.",
       });
     }
 
@@ -350,7 +351,7 @@ router.post("/ajuste", (req, res) => {
 
     if (!produto) {
       return res.status(404).json({
-        erro: "Produto não encontrado.",
+        erro: "Produto nÃ£o encontrado.",
       });
     }
 
@@ -414,7 +415,7 @@ router.post("/ajuste", (req, res) => {
 });
 
 // ========================================
-// HISTÓRICO DE MOVIMENTAÇÕES
+// HISTÃ“RICO DE MOVIMENTAÃ‡Ã•ES
 // ========================================
 
 router.get("/movimentacoes", (req, res) => {
@@ -442,12 +443,12 @@ router.get("/movimentacoes", (req, res) => {
     res.json(movimentacoes);
   } catch (erro) {
     console.error(
-      "Erro ao carregar movimentações:",
+      "Erro ao carregar movimentaÃ§Ãµes:",
       erro
     );
 
     res.status(500).json({
-      erro: "Erro ao carregar movimentações.",
+      erro: "Erro ao carregar movimentaÃ§Ãµes.",
     });
   }
 });

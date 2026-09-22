@@ -1,109 +1,231 @@
 import "./PromotionSlider.css";
+
 import { useEffect, useState } from "react";
 
 import {
   FaArrowLeft,
   FaArrowRight,
   FaShoppingCart,
-  FaFire
+  FaFire,
+  FaImage,
 } from "react-icons/fa";
 
-import promo01 from "../../assets/promotions/promo01.webp";
-import promo02 from "../../assets/promotions/promo02.webp";
-import promo03 from "../../assets/promotions/promo03.webp";
-import promo04 from "../../assets/promotions/promo04.webp";
-import promo05 from "../../assets/promotions/promo05.webp";
-
-const promotions = [
-  {
-    image: promo01,
-    title: "Canecas Personalizadas",
-    subtitle: "Diversos modelos para todas as ocasiões.",
-    oldPrice: "49,90",
-    newPrice: "39,90",
-    discount: "20%"
-  },
-  {
-    image: promo02,
-    title: "Copos Personalizados",
-    subtitle: "Personalização premium para presentes.",
-    oldPrice: "69,90",
-    newPrice: "49,90",
-    discount: "25%"
-  },
-  {
-    image: promo03,
-    title: "Camisetas",
-    subtitle: "Estampas em alta definição.",
-    oldPrice: "119,90",
-    newPrice: "89,90",
-    discount: "30%"
-  },
-  {
-    image: promo04,
-    title: "Quadros MDF",
-    subtitle: "Presentes exclusivos feitos com carinho.",
-    oldPrice: "89,90",
-    newPrice: "69,90",
-    discount: "25%"
-  },
-  {
-    image: promo05,
-    title: "Brindes",
-    subtitle: "Produtos exclusivos para empresas.",
-    oldPrice: "159,90",
-    newPrice: "119,90",
-    discount: "35%"
-  }
-];
+import { carregarBanners } from "../../services/bannerService";
 
 export default function PromotionSlider() {
-
+  const [promotions, setPromotions] = useState([]);
   const [current, setCurrent] = useState(0);
+  const [carregando, setCarregando] = useState(true);
 
   useEffect(() => {
+    async function carregar() {
+      try {
+        const dados = await carregarBanners();
+
+        console.log("========== BANNERS DO CARROSSEL ==========");
+        console.table(dados);
+
+        const bannersAtivos = dados
+          .filter((banner) => banner.ativo !== false)
+          .map((banner) => {
+            let imagem = banner.image || banner.imagem || "";
+
+            // Remove espaços acidentais
+            imagem = String(imagem).trim();
+
+            // Garante que caminhos locais com / funcionem corretamente
+            if (
+              imagem &&
+              !imagem.startsWith("/") &&
+              !imagem.startsWith("http://") &&
+              !imagem.startsWith("https://")
+            ) {
+              imagem = `/${imagem}`;
+            }
+
+            return {
+              id: `banner-${banner.id}`,
+              tipo: "banner",
+              image: imagem,
+
+              title:
+                banner.title ||
+                banner.titulo ||
+                "Bella Tom",
+
+              subtitle:
+                banner.subtitle ||
+                "Produtos personalizados Bella Tom.",
+
+              oldPrice: Number(
+                String(banner.oldPrice || 0).replace(",", ".")
+              ),
+
+              newPrice: Number(
+                String(banner.newPrice || 0).replace(",", ".")
+              ),
+
+              discount: banner.discount || 0,
+
+              button:
+                banner.button ||
+                "Comprar Agora",
+            };
+          });
+
+        console.log("🖼️ BANNERS ATIVOS:", bannersAtivos);
+
+        setPromotions(bannersAtivos);
+      } catch (error) {
+        console.error(
+          "Erro ao carregar banners do carrossel:",
+          error
+        );
+
+        setPromotions([]);
+      } finally {
+        setCarregando(false);
+      }
+    }
+
+    carregar();
+  }, []);
+
+  useEffect(() => {
+    if (promotions.length <= 1) return undefined;
+
     const timer = setInterval(() => {
-      setCurrent(old =>
-        old === promotions.length - 1 ? 0 : old + 1
+      setCurrent((old) =>
+        old === promotions.length - 1
+          ? 0
+          : old + 1
       );
     }, 5000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [promotions.length]);
 
-  const next = () => {
-    setCurrent(old =>
-      old === promotions.length - 1 ? 0 : old + 1
-    );
-  };
+  useEffect(() => {
+    if (
+      promotions.length > 0 &&
+      current >= promotions.length
+    ) {
+      setCurrent(0);
+    }
+  }, [current, promotions.length]);
 
-  const prev = () => {
-    setCurrent(old =>
-      old === 0 ? promotions.length - 1 : old - 1
+  function next() {
+    if (promotions.length === 0) return;
+
+    setCurrent((old) =>
+      old === promotions.length - 1
+        ? 0
+        : old + 1
     );
-  };
+  }
+
+  function prev() {
+    if (promotions.length === 0) return;
+
+    setCurrent((old) =>
+      old === 0
+        ? promotions.length - 1
+        : old - 1
+    );
+  }
+
+  function comprarAgora(item) {
+    const mensagem = encodeURIComponent(
+      `Olá! Gostaria de comprar ou solicitar um orçamento para: ${item.title}`
+    );
+
+    window.open(
+      `https://wa.me/5554999999999?text=${mensagem}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
+  }
+
+  function imagemFalhou(event, item) {
+    console.error(
+      "❌ Erro ao carregar imagem do banner:",
+      item.image
+    );
+
+    // Segunda tentativa usando somente o nome do arquivo
+    const nomeArquivo = item.image.split("/").pop();
+
+    if (
+      nomeArquivo &&
+      event.currentTarget.dataset.fallback !== "true"
+    ) {
+      event.currentTarget.dataset.fallback = "true";
+      event.currentTarget.src = `/images/${nomeArquivo}`;
+    }
+  }
+
+  if (carregando) {
+    return (
+      <section className="promotionSlider loading">
+        <div className="promoContent">
+          <div className="fire">
+            <FaFire />
+          </div>
+
+          <h2>
+            PROMOÇÕES
+            <br />
+            DA SEMANA
+          </h2>
+
+          <p>Carregando ofertas especiais...</p>
+        </div>
+      </section>
+    );
+  }
+
+  if (promotions.length === 0) {
+    return null;
+  }
 
   const item = promotions[current];
 
   return (
+    <section className="promotionSlider">
+      <div className="promoContainer">
 
-    <section className="promo">
+        {/* IMAGEM DO BANNER */}
+        {item.image ? (
+          <div className="promoImageWrapper">
+            <img
+              src={item.image}
+              alt={item.title}
+              className="promoImage"
+              onError={(event) =>
+                imagemFalhou(event, item)
+              }
+            />
+          </div>
+        ) : (
+          <div className="promoImagePlaceholder">
+            <FaImage />
+          </div>
+        )}
 
-      <div className="promoCard">
+        {/* SETA ESQUERDA */}
+        {promotions.length > 1 && (
+          <button
+            type="button"
+            className="nav left"
+            onClick={prev}
+            aria-label="Banner anterior"
+          >
+            <FaArrowLeft />
+          </button>
+        )}
 
-        {/* IMAGEM DE FUNDO */}
-        <img
-          className="bg-image"
-          src={item.image}
-          alt={item.title}
-        />
-
-        <button className="nav left" onClick={prev}>
-          <FaArrowLeft />
-        </button>
-
+        {/* LADO ESQUERDO */}
         <div className="promoLeft">
-
           <div className="fire">
             <FaFire />
           </div>
@@ -115,65 +237,91 @@ export default function PromotionSlider() {
           </h2>
 
           <p>
-            Qualidade e preços especiais
-            para tornar seus momentos
-            ainda mais únicos.
+            Qualidade e preços especiais para
+            tornar seus momentos ainda mais únicos.
           </p>
 
-          <button className="btnLeft">
-            Aproveite Agora
+          <button
+            type="button"
+            className="btnLeft"
+            onClick={() => comprarAgora(item)}
+          >
+            {item.button}
           </button>
-
         </div>
 
-        <div className="badge">
-          {item.discount}
-          <span>OFF</span>
-        </div>
+        {/* DESCONTO */}
+        {item.discount && (
+          <div className="badge">
+            {item.discount}
+            <span>OFF</span>
+          </div>
+        )}
 
+        {/* LADO DIREITO */}
         <div className="promoRight">
-
           <h3>{item.title}</h3>
 
           <p>{item.subtitle}</p>
 
-          <small>
-            De R$ {item.oldPrice}
-          </small>
+          {item.oldPrice > 0 && (
+            <small>
+              De{" "}
+              {item.oldPrice.toLocaleString("pt-BR", {
+                style: "currency",
+                currency: "BRL",
+              })}
+            </small>
+          )}
 
-          <h4>
-            Por R$ {item.newPrice}
-          </h4>
+          {item.newPrice > 0 && (
+            <h4>
+              Por{" "}
+              {item.newPrice.toLocaleString("pt-BR", {
+                style: "currency",
+                currency: "BRL",
+              })}
+            </h4>
+          )}
 
-          <button>
-            Comprar Agora
+          <button
+            type="button"
+            onClick={() => comprarAgora(item)}
+          >
+            {item.button}
             <FaShoppingCart />
           </button>
-
         </div>
 
-        <button className="nav right" onClick={next}>
-          <FaArrowRight />
-        </button>
-
+        {/* SETA DIREITA */}
+        {promotions.length > 1 && (
+          <button
+            type="button"
+            className="nav right"
+            onClick={next}
+            aria-label="Próximo banner"
+          >
+            <FaArrowRight />
+          </button>
+        )}
       </div>
 
-      <div className="dots">
-
-        {promotions.map((_, i) => (
-
-          <span
-            key={i}
-            className={current === i ? "active" : ""}
-            onClick={() => setCurrent(i)}
-          />
-
-        ))}
-
-      </div>
-
+      {/* INDICADORES */}
+      {promotions.length > 1 && (
+        <div className="dots">
+          {promotions.map((bannerItem, index) => (
+            <button
+              type="button"
+              key={bannerItem.id}
+              className={
+                current === index ? "active" : ""
+              }
+              onClick={() => setCurrent(index)}
+              aria-label={`Ir para slide ${index + 1}`}
+            />
+          ))}
+        </div>
+      )}
     </section>
-
   );
-
 }

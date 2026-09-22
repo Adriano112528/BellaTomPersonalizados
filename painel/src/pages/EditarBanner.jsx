@@ -11,69 +11,86 @@ import {
 import { uploadBanner } from "../services/storageService";
 
 export default function EditarBanner() {
-
   const { id } = useParams();
   const navigate = useNavigate();
 
   const [form, setForm] = useState(null);
   const [enviandoImagem, setEnviandoImagem] = useState(false);
+  const [salvando, setSalvando] = useState(false);
 
   const inputFile = useRef(null);
 
+  // ==========================================
+  // CARREGAR BANNER
+  // ==========================================
+
   useEffect(() => {
-
     async function carregar() {
-
       try {
-
         const banners = await carregarBanners();
 
-        const banner = banners.find((b) => b.id === id);
+        const banner = banners.find(
+          (b) => b.id === id
+        );
 
         if (banner) {
-
           setForm(banner);
-
         }
-
       } catch (erro) {
-
-        console.error(erro);
-
+        console.error(
+          "Erro ao carregar banner:",
+          erro
+        );
       }
-
     }
 
     carregar();
-
   }, [id]);
 
-  function alterarCampo(e) {
+  // ==========================================
+  // ALTERAR CAMPO
+  // ==========================================
 
+  function alterarCampo(e) {
     setForm((old) => ({
       ...old,
       [e.target.name]: e.target.value,
     }));
-
   }
+
+  // ==========================================
+  // ABRIR SELETOR DE IMAGEM
+  // ==========================================
 
   function abrirSeletorImagem() {
-
     inputFile.current.click();
-
   }
 
-  async function alterarImagem(e) {
+  // ==========================================
+  // ALTERAR IMAGEM
+  // ==========================================
 
+  async function alterarImagem(e) {
     const arquivo = e.target.files[0];
 
-    if (!arquivo) return;
+    if (!arquivo) {
+      return;
+    }
 
     try {
-
       setEnviandoImagem(true);
 
-      const url = await uploadBanner(arquivo);
+      console.log(
+        "🟡 Enviando nova imagem..."
+      );
+
+      const url =
+        await uploadBanner(arquivo);
+
+      console.log(
+        "🟢 Imagem enviada:",
+        url
+      );
 
       setForm((old) => ({
         ...old,
@@ -81,50 +98,132 @@ export default function EditarBanner() {
         imagem: url,
       }));
 
-      alert("Imagem enviada com sucesso!");
+      alert(
+        "Imagem enviada com sucesso!"
+      );
 
     } catch (erro) {
+      console.error(
+        "🔴 Erro ao enviar imagem:",
+        erro
+      );
 
-      console.error(erro);
-
-      alert("Erro ao enviar imagem.");
+      alert(
+        "Erro ao enviar imagem."
+      );
 
     } finally {
-
       setEnviandoImagem(false);
 
+      // Permite selecionar novamente
+      // a mesma imagem se necessário
+      e.target.value = "";
     }
-
   }
 
+  // ==========================================
+  // SALVAR BANNER
+  // ==========================================
+
   async function salvar() {
+    if (salvando) {
+      return;
+    }
 
     try {
+      setSalvando(true);
 
-      await atualizarBanner(id, form);
+      console.log(
+        "🟡 Iniciando salvamento do banner..."
+      );
 
-      alert("Banner atualizado com sucesso!");
+      console.log(
+        "ID do banner:",
+        id
+      );
+
+      const dadosParaSalvar = {
+        title: form.title || "",
+        subtitle: form.subtitle || "",
+        oldPrice: form.oldPrice || "",
+        newPrice: form.newPrice || "",
+        discount: form.discount || 0,
+        button:
+          form.button ||
+          "Comprar Agora",
+        ativo:
+          form.ativo ?? true,
+        image:
+          form.image ||
+          form.imagem ||
+          "",
+      };
+
+      console.log(
+        "📦 Dados que serão salvos:",
+        dadosParaSalvar
+      );
+
+      await atualizarBanner(
+        id,
+        dadosParaSalvar
+      );
+
+      console.log(
+        "🟢 Banner atualizado no Firestore!"
+      );
+
+      alert(
+        "Banner atualizado com sucesso!"
+      );
 
       navigate("/editor");
 
     } catch (erro) {
+      console.error(
+        "🔴 Erro ao salvar banner:",
+        erro
+      );
 
-      console.error(erro);
+      console.error(
+        "Código do erro:",
+        erro?.code
+      );
 
-      alert("Erro ao salvar.");
+      console.error(
+        "Mensagem:",
+        erro?.message
+      );
 
+      alert(
+        `Erro ao salvar banner: ${
+          erro?.message ||
+          "Erro desconhecido"
+        }`
+      );
+
+    } finally {
+      setSalvando(false);
     }
-
   }
+
+  // ==========================================
+  // CARREGANDO BANNER
+  // ==========================================
 
   if (!form) {
-
-    return <h2>Carregando banner...</h2>;
-
+    return (
+      <h2>
+        Carregando banner...
+      </h2>
+    );
   }
 
-  return (
+  // ==========================================
+  // TELA
+  // ==========================================
 
+  return (
     <div className="editarBanner">
 
       <div className="editarHeader">
@@ -136,12 +235,16 @@ export default function EditarBanner() {
           </span>
 
           <h1>
-            {form.title || "Editar Banner"}
+            {form.title ||
+              "Editar Banner"}
           </h1>
 
           <p>
-            Altere imagem, textos, preços e botão deste banner.
-            As alterações serão exibidas automaticamente no site.
+            Altere imagem, textos,
+            preços e botão deste
+            banner. As alterações
+            serão exibidas
+            automaticamente no site.
           </p>
 
         </div>
@@ -150,6 +253,10 @@ export default function EditarBanner() {
 
       <div className="editarGrid">
 
+        {/* =====================================
+            IMAGEM
+        ====================================== */}
+
         <div className="previewCard">
 
           <h2>
@@ -157,14 +264,23 @@ export default function EditarBanner() {
           </h2>
 
           <p className="previewText">
-            Esta imagem será exibida no carrossel da página inicial.
+            Esta imagem será exibida
+            no carrossel da página
+            inicial.
           </p>
 
           <div className="previewImage">
 
             <img
-              src={form.image || form.imagem}
-              alt={form.title || form.titulo}
+              src={
+                form.image ||
+                form.imagem
+              }
+              alt={
+                form.title ||
+                form.titulo ||
+                "Banner Bella Tom"
+              }
               className="previewBanner"
             />
 
@@ -174,92 +290,149 @@ export default function EditarBanner() {
             ref={inputFile}
             type="file"
             accept="image/*"
-            style={{ display: "none" }}
+            style={{
+              display: "none",
+            }}
             onChange={alterarImagem}
           />
 
           <button
             type="button"
             className="upload"
-            onClick={abrirSeletorImagem}
-            disabled={enviandoImagem}
+            onClick={
+              abrirSeletorImagem
+            }
+            disabled={
+              enviandoImagem ||
+              salvando
+            }
           >
-
             {enviandoImagem
               ? "Enviando..."
               : "Trocar Imagem"}
-
           </button>
 
         </div>
 
+        {/* =====================================
+            FORMULÁRIO
+        ====================================== */}
+
         <div className="formCard">
 
-          <label>Título</label>
+          <label>
+            Título
+          </label>
 
           <input
             name="title"
-            value={form.title || ""}
-            onChange={alterarCampo}
+            value={
+              form.title || ""
+            }
+            onChange={
+              alterarCampo
+            }
           />
 
-          <label>Descrição</label>
+          <label>
+            Descrição
+          </label>
 
           <textarea
             rows={3}
             name="subtitle"
-            value={form.subtitle || ""}
-            onChange={alterarCampo}
+            value={
+              form.subtitle || ""
+            }
+            onChange={
+              alterarCampo
+            }
           />
 
-          <label>Preço Antigo</label>
+          <label>
+            Preço Antigo
+          </label>
 
           <input
             name="oldPrice"
-            value={form.oldPrice || ""}
-            onChange={alterarCampo}
+            value={
+              form.oldPrice || ""
+            }
+            onChange={
+              alterarCampo
+            }
           />
 
-          <label>Preço Promocional</label>
+          <label>
+            Preço Promocional
+          </label>
 
           <input
             name="newPrice"
-            value={form.newPrice || ""}
-            onChange={alterarCampo}
+            value={
+              form.newPrice || ""
+            }
+            onChange={
+              alterarCampo
+            }
           />
 
-          <label>Desconto</label>
+          <label>
+            Desconto
+          </label>
 
           <input
             name="discount"
-            value={form.discount || ""}
-            onChange={alterarCampo}
+            value={
+              form.discount || ""
+            }
+            onChange={
+              alterarCampo
+            }
           />
 
-          <label>Texto do botão</label>
+          <label>
+            Texto do botão
+          </label>
 
           <input
             name="button"
-            value={form.button || ""}
-            onChange={alterarCampo}
+            value={
+              form.button || ""
+            }
+            onChange={
+              alterarCampo
+            }
           />
+
+          {/* =====================================
+              SALVAR
+          ====================================== */}
 
           <button
             type="button"
             className="salvar"
             onClick={salvar}
+            disabled={
+              salvando ||
+              enviandoImagem
+            }
           >
-
-            Salvar Alterações
-
+            {salvando
+              ? "Salvando..."
+              : "Salvar Alterações"}
           </button>
 
           <button
             type="button"
             className="voltar"
-            onClick={() => navigate("/editor")}
+            onClick={() =>
+              navigate("/editor")
+            }
+            disabled={salvando}
           >
-            ← Voltar ao Editor do Site
+            ← Voltar ao Editor
+            do Site
           </button>
 
         </div>
@@ -267,7 +440,5 @@ export default function EditarBanner() {
       </div>
 
     </div>
-
   );
-
 }

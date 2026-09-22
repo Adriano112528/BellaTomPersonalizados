@@ -1,220 +1,323 @@
-.editarBanner{
-    padding:40px;
-    color:#fff;
+/* =========================================================
+   BELLA TOM
+   EDITAR BANNER
+   ROSA PREMIUM / GRAFITE
+   ========================================================= */
+
+.editarBanner {
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px;
+  box-sizing: border-box;
+  color: #ffffff;
 }
 
-.editarHeader{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    margin-bottom:35px;
+/* CABEÇALHO */
+
+.editarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 35px;
 }
 
-.editarHeader h1{
-    font-size:42px;
-    font-weight:700;
-    margin-bottom:8px;
+.editarHeader h1 {
+  margin: 8px 0 10px;
+  color: #ffffff;
+  font-size: 42px;
+  font-weight: 850;
+  letter-spacing: -1px;
+  line-height: 1.1;
 }
 
-.editarHeader p{
-    color:#9ca3af;
-    font-size:18px;
+.editarHeader p {
+  max-width: 850px;
+  margin: 0;
+  color: #aaa6b6;
+  font-size: 17px;
+  line-height: 1.6;
 }
 
-.editarGrid{
-    display:grid;
-    grid-template-columns:380px 1fr;
-    gap:30px;
+.bannerTag {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 13px;
+  border: 1px solid rgba(244, 114, 182, 0.28);
+  border-radius: 10px;
+  background: rgba(244, 114, 182, 0.1);
+  color: #f9a8d4;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
 }
+
+/* GRID */
+
+.editarGrid {
+  display: grid;
+  grid-template-columns: 380px minmax(0, 1fr);
+  gap: 30px;
+  align-items: start;
+}
+
+/* CARDS */
 
 .previewCard,
-.formCard{
-
-    background:#1d1d1d;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:22px;
-
-    padding:28px;
-
+.formCard {
+  min-width: 0;
+  padding: 28px;
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(244, 114, 182, 0.055),
+      rgba(255, 255, 255, 0.015)
+    ),
+    #1a1a21;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.025),
+    0 18px 40px rgba(0, 0, 0, 0.25);
 }
 
 .previewCard h2,
-.formCard h2{
-
-    margin-bottom:25px;
-
+.formCard h2 {
+  margin: 0 0 10px;
+  color: #ffffff;
+  font-size: 23px;
+  font-weight: 850;
+  letter-spacing: -0.4px;
 }
 
-.previewImage{
-
-    width:100%;
-    height:260px;
-
-    border-radius:18px;
-
-    background:#2b2b2b;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    color:#888;
-
-    font-size:20px;
-
-    margin-bottom:25px;
-
+.previewText {
+  margin: 0 0 24px;
+  color: #aaa6b6;
+  font-size: 14px;
+  line-height: 1.6;
 }
 
-.upload{
+/* PREVISUALIZAÇÃO DA IMAGEM */
+/* A imagem permanece intacta */
 
-    width:100%;
-
-    height:54px;
-
-    border:none;
-
-    border-radius:14px;
-
-    background:#d9b545;
-
-    color:#111;
-
-    font-size:18px;
-
-    font-weight:700;
-
-    cursor:pointer;
-
-    transition:.25s;
-
+.previewImage {
+  width: 100%;
+  height: 260px;
+  margin-bottom: 25px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(244, 114, 182, 0.16);
+  border-radius: 18px;
+  background: #24242d;
+  color: #888492;
+  font-size: 20px;
 }
 
-.upload:hover{
-
-    background:#e7c75f;
-
+.previewBanner {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
 }
 
-.formCard{
+/* BOTÃO TROCAR IMAGEM */
 
-    display:flex;
-
-    flex-direction:column;
-
+.upload {
+  width: 100%;
+  height: 54px;
+  border: 1px solid rgba(244, 114, 182, 0.35);
+  border-radius: 14px;
+  background: linear-gradient(135deg, #f9a8d4, #db2777);
+  color: #2b1424;
+  font-size: 16px;
+  font-weight: 850;
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
 }
 
-.formCard label{
+.upload:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+  box-shadow: 0 10px 25px rgba(244, 114, 182, 0.25);
+}
 
-    margin-top:16px;
+.upload:disabled {
+  opacity: 0.65;
+  cursor: wait;
+  transform: none;
+  box-shadow: none;
+}
 
-    margin-bottom:8px;
+/* FORMULÁRIO */
 
-    font-weight:600;
+.formCard {
+  display: flex;
+  flex-direction: column;
+}
 
-    color:#d7d7d7;
+.formCard label {
+  margin-top: 16px;
+  margin-bottom: 8px;
+  color: #d8d3df;
+  font-size: 14px;
+  font-weight: 700;
+}
 
+.formCard label:first-child {
+  margin-top: 0;
 }
 
 .formCard input,
-.formCard textarea{
+.formCard textarea {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 13px;
+  outline: none;
+  background: #24242d;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.5;
+  resize: vertical;
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
 
-    width:100%;
+.formCard textarea {
+  min-height: 105px;
+}
 
-    background:#2b2b2b;
-
-    border:1px solid #3b3b3b;
-
-    border-radius:12px;
-
-    padding:14px;
-
-    color:white;
-
-    font-size:16px;
-
-    resize:none;
-
-    outline:none;
-
+.formCard input::placeholder,
+.formCard textarea::placeholder {
+  color: #777384;
 }
 
 .formCard input:focus,
-.formCard textarea:focus{
-
-    border-color:#d9b545;
-
+.formCard textarea:focus {
+  border-color: rgba(244, 114, 182, 0.7);
+  background: #29232d;
+  box-shadow: 0 0 0 4px rgba(244, 114, 182, 0.08);
 }
 
-.salvar{
+/* BOTÃO SALVAR */
 
-    margin-top:30px;
-
-    height:60px;
-
-    border:none;
-
-    border-radius:14px;
-
-    background:#d9b545;
-
-    color:#111;
-
-    font-size:20px;
-
-    font-weight:700;
-
-    cursor:pointer;
-
-    transition:.25s;
-
+.salvar {
+  width: 100%;
+  height: 60px;
+  margin-top: 30px;
+  border: 1px solid rgba(244, 114, 182, 0.35);
+  border-radius: 15px;
+  background: linear-gradient(135deg, #f9a8d4, #db2777);
+  color: #2b1424;
+  font-size: 18px;
+  font-weight: 850;
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
 }
 
-.salvar:hover{
-
-    background:#e7c75f;
-
+.salvar:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+  box-shadow: 0 12px 28px rgba(244, 114, 182, 0.25);
 }
 
-@media(max-width:1100px){
+/* BOTÃO VOLTAR */
 
-.editarGrid{
-
-grid-template-columns:1fr;
-
+.voltar {
+  width: 100%;
+  height: 52px;
+  margin-top: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.045);
+  color: #e8e3ed;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
 }
 
-}
-.previewBanner{
-
-    width:100%;
-
-    height:100%;
-
-    object-fit:cover;
-
-    border-radius:18px;
-
-    display:block;
-
-}
-.voltar{
-    width:100%;
-    height:52px;
-    margin-top:16px;
-    border:none;
-    border-radius:14px;
-    background:#2b2b2b;
-    color:#fff;
-    font-size:17px;
-    font-weight:600;
-    cursor:pointer;
-    transition:.25s;
+.voltar:hover {
+  transform: translateY(-2px);
+  border-color: rgba(244, 114, 182, 0.45);
+  background: rgba(244, 114, 182, 0.12);
+  color: #f9a8d4;
 }
 
-.voltar:hover{
-    background:#3a3a3a;
-    border:1px solid #d6b54a;
+/* RESPONSIVIDADE */
+
+@media (max-width: 1100px) {
+  .editarGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .previewCard {
+    max-width: 100%;
+  }
+
+  .previewImage {
+    height: 340px;
+  }
+}
+
+@media (max-width: 700px) {
+  .editarBanner {
+    padding: 25px 18px 45px;
+  }
+
+  .editarHeader h1 {
+    font-size: 34px;
+  }
+
+  .editarHeader p {
+    font-size: 15px;
+  }
+
+  .previewCard,
+  .formCard {
+    padding: 22px;
+    border-radius: 20px;
+  }
+
+  .previewImage {
+    height: 260px;
+  }
+}
+
+@media (max-width: 450px) {
+  .editarBanner {
+    padding: 20px 14px 35px;
+  }
+
+  .editarHeader h1 {
+    font-size: 29px;
+  }
+
+  .previewImage {
+    height: 220px;
+  }
+
+  .formCard input,
+  .formCard textarea {
+    font-size: 14px;
+  }
 }

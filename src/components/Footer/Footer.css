@@ -5,33 +5,34 @@
 .footer {
     width: 100%;
     max-width: 1800px;
-    margin: -70px auto 30px auto;
+    margin: 60px auto 30px;
     padding: 0 40px;
+    box-sizing: border-box;
 }
 
 .footerContainer {
     position: relative;
+    width: 100%;
+    box-sizing: border-box;
     background: #121212;
-    border: 1px solid rgba(231, 189, 66, .22);
+    border: 1px solid rgba(231, 189, 66, 0.22);
     border-radius: 32px;
     padding: 70px 50px;
     display: grid;
     grid-template-columns: 1.15fr 1.2fr 1.35fr 1fr 1fr;
     gap: 35px;
     align-items: start;
-    box-shadow: 
-        0 0 25px rgba(231, 189, 66, .08),
-        0 20px 60px rgba(0, 0, 0, .55);
+    box-shadow:
+        0 0 25px rgba(231, 189, 66, 0.08),
+        0 20px 60px rgba(0, 0, 0, 0.55);
 }
 
-/*========================
-LOGO & SLOGAN
-========================*/
+/* LOGO */
 
 .footerLogo h2 {
     font-size: 32px;
     font-weight: 800;
-    margin-bottom: 5px;
+    margin: 0 0 5px;
     font-family: "Playfair Display", serif;
 }
 
@@ -40,12 +41,12 @@ LOGO & SLOGAN
 }
 
 .footerLogo .tom {
-    color: #E7BD42;
+    color: #e7bd42;
 }
 
 .footerLogo .subtitle {
     display: block;
-    color: #E7BD42;
+    color: #e7bd42;
     font-size: 11px;
     letter-spacing: 4px;
     font-weight: 700;
@@ -55,7 +56,7 @@ LOGO & SLOGAN
 .footerLine {
     width: 45px;
     height: 2px;
-    background: #E7BD42;
+    background: #e7bd42;
     margin-bottom: 20px;
 }
 
@@ -66,9 +67,7 @@ LOGO & SLOGAN
     text-align: left;
 }
 
-/*========================
-COLUNAS GERAIS
-========================*/
+/* COLUNAS */
 
 .footerColumn {
     display: flex;
@@ -76,6 +75,7 @@ COLUNAS GERAIS
     align-items: flex-start;
     text-align: left;
     width: 100%;
+    min-width: 0;
 }
 
 .borderRight {
@@ -85,68 +85,68 @@ COLUNAS GERAIS
 
 .footerColumn h3,
 .footerPayTitle {
-    color: #E7BD42;
+    color: #e7bd42;
     font-size: 18px;
     font-weight: 700;
-    margin-bottom: 22px;
+    margin: 0 0 22px;
     letter-spacing: 0.5px;
     text-align: left;
 }
 
-/* Contato */
-.footerItem {
+/* CONTATO */
+
+.footerItem,
+.paymentItem {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 12px;
+    width: 100%;
     color: #cfcfcf;
     font-size: 15px;
     margin-bottom: 14px;
     text-decoration: none;
-    white-space: nowrap;
-    width: 100%;
+    min-width: 0;
 }
 
-.footerItem span {
-    white-space: nowrap;
-    line-height: 1.3;
+.footerItem span,
+.paymentItem span {
+    line-height: 1.4;
     text-align: left;
+    white-space: normal;
+    overflow-wrap: anywhere;
 }
 
-.footerItem svg {
-    color: #E7BD42;
-    font-size: 16px;
+.footerItem svg,
+.footerItemStatic svg,
+.paymentItem svg {
+    color: #e7bd42;
     flex-shrink: 0;
 }
 
 .footerItemStatic {
     display: flex;
     align-items: flex-start;
-    justify-content: flex-start;
     gap: 12px;
+    width: 100%;
     color: #cfcfcf;
     margin-top: 6px;
     font-size: 15px;
-    width: 100%;
 }
 
 .footerItemStatic span {
     line-height: 1.4;
     text-align: left;
-    white-space: nowrap;
+    white-space: normal;
+    overflow-wrap: anywhere;
 }
 
-.footerItemStatic svg {
-    color: #E7BD42;
-    font-size: 16px;
-    flex-shrink: 0;
-    margin-top: 2px;
-}
+/* REDES SOCIAIS */
 
-/* Redes Sociais */
 .footerSocial {
     display: flex;
     justify-content: flex-start;
+    flex-wrap: wrap;
     gap: 14px;
     margin-bottom: 18px;
     width: 100%;
@@ -158,16 +158,16 @@ COLUNAS GERAIS
     border-radius: 50%;
     background: #1a1a1a;
     border: 1px solid rgba(231, 189, 66, 0.3);
-    color: #E7BD42;
+    color: #e7bd42;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 20px;
-    transition: .35s;
+    transition: 0.35s;
 }
 
 .footerSocial a:hover {
-    background: #E7BD42;
+    background: #e7bd42;
     color: #121212;
     transform: translateY(-4px);
     box-shadow: 0 10px 25px rgba(231, 189, 66, 0.3);
@@ -180,76 +180,7 @@ COLUNAS GERAIS
     text-align: left;
 }
 
-/* Pagamentos */
-.paymentItem {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 12px;
-    color: #cfcfcf;
-    font-size: 15px;
-    margin-bottom: 14px;
-    width: 100%;
-    text-align: left;
-}
-
-.paymentItem span {
-    text-align: left;
-    line-height: 1.3;
-}
-
-.paymentItem svg {
-    color: #E7BD42;
-    font-size: 18px;
-    flex-shrink: 0;
-}
-
-/*========================
-RESPONSIVO
-========================*/
-
-@media (max-width: 1300px) {
-    .footerContainer {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 40px;
-    }
-    .borderRight {
-        border-right: none;
-        padding-right: 0;
-    }
-}
-
-@media (max-width: 768px) {
-    .footerContainer {
-        grid-template-columns: 1fr;
-        padding: 40px 25px;
-        text-align: center;
-        justify-items: center;
-    }
-    .footerColumn {
-        align-items: center;
-        text-align: center;
-    }
-    .footerItem, .paymentItem, .footerItemStatic {
-        justify-content: center;
-    }
-    .footerLine {
-        margin: 0 auto 20px auto;
-    }
-    .footerSocial {
-        justify-content: center;
-    }
-    .borderRight {
-        border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        padding-bottom: 30px;
-        width: 100%;
-    }
-}
-
-/*=========================================================
-SITE / EMAIL COLUMN (DOURADO, CENTRALIZADO E SEM FOCUS OUTLINE)
-=========================================================*/
+/* SITE E E-MAIL */
 
 .emailColumn {
     display: flex;
@@ -257,65 +188,48 @@ SITE / EMAIL COLUMN (DOURADO, CENTRALIZADO E SEM FOCUS OUTLINE)
     align-items: center;
     justify-content: flex-start;
     text-align: center;
-    padding-top: 0px;
+    padding-top: 0;
+    min-width: 0;
 }
 
 .emailIcon {
     display: none;
 }
 
-.footerWebsite {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    margin: 0 auto 20px;
-    color: #E7BD42;
-    text-decoration: none;
-    font-size: 26px;
-    font-weight: 700;
-    line-height: 1.2;
-    transition: .35s ease;
-    outline: none;
-    border: none;
-    box-shadow: none;
-}
-
-.footerWebsite:focus,
-.footerWebsite:focus-visible,
-.footerWebsite:active {
-    outline: none !important;
-    box-shadow: none !important;
-    border: none !important;
-}
-
-.footerWebsite:hover {
-    color: #ffffff;
-    transform: translateY(-2px);
-}
-
-.footerWebsite svg {
-    font-size: 24px;
-    flex-shrink: 0;
-}
-
+.footerWebsite,
 .footerEmail {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    margin: 0 auto 16px;
-    color: #E7BD42;
+    color: #e7bd42;
     text-decoration: none;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 1.2;
-    transition: .35s ease;
+    text-align: center;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    transition: 0.35s ease;
     outline: none;
     border: none;
     box-shadow: none;
 }
 
+.footerWebsite {
+    margin: 0 auto 20px;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.footerEmail {
+    margin: 0 auto 16px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+.footerWebsite:focus,
+.footerWebsite:focus-visible,
+.footerWebsite:active,
 .footerEmail:focus,
 .footerEmail:focus-visible,
 .footerEmail:active {
@@ -324,9 +238,15 @@ SITE / EMAIL COLUMN (DOURADO, CENTRALIZADO E SEM FOCUS OUTLINE)
     border: none !important;
 }
 
+.footerWebsite:hover,
 .footerEmail:hover {
-    color: #ffffff;
+    color: #fff;
     transform: translateY(-2px);
+}
+
+.footerWebsite svg {
+    font-size: 24px;
+    flex-shrink: 0;
 }
 
 .footerEmail svg {
@@ -336,7 +256,7 @@ SITE / EMAIL COLUMN (DOURADO, CENTRALIZADO E SEM FOCUS OUTLINE)
 
 .footerHeart {
     margin: 4px 0 12px;
-    color: #E7BD42;
+    color: #e7bd42;
     font-size: 22px;
 }
 
@@ -348,14 +268,12 @@ SITE / EMAIL COLUMN (DOURADO, CENTRALIZADO E SEM FOCUS OUTLINE)
     text-align: center;
 }
 
-/*=========================================================
-RODAPÉ INFERIOR (COPYRIGHT) ELEGANTE
-=========================================================*/
+/* RODAPÉ INFERIOR */
 
 .footerBottom {
     margin-top: 35px;
     padding-top: 30px;
-    border-top: 1px solid rgba(231, 189, 66, .12);
+    border-top: 1px solid rgba(231, 189, 66, 0.12);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -366,16 +284,14 @@ RODAPÉ INFERIOR (COPYRIGHT) ELEGANTE
 }
 
 .footerBottom strong {
-    color: #E7BD42;
+    color: #e7bd42;
     font-weight: 600;
 }
 
-/*=========================================================
-ANIMAÇÃO
-=========================================================*/
+/* ANIMAÇÃO */
 
 .footerContainer {
-    animation: footerFade .8s ease;
+    animation: footerFade 0.8s ease;
 }
 
 @keyframes footerFade {
@@ -383,8 +299,417 @@ ANIMAÇÃO
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* RESPONSIVO */
+
+@media (max-width: 1300px) {
+    .footerContainer {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 40px;
+    }
+
+    .borderRight {
+        border-right: none;
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        margin-top: 40px;
+        padding: 0 15px;
+    }
+
+    .footerContainer {
+        grid-template-columns: 1fr;
+        padding: 40px 25px;
+        gap: 35px;
+        text-align: center;
+        justify-items: center;
+    }
+
+    .footerColumn,
+    .emailColumn {
+        align-items: center;
+        text-align: center;
+    }
+
+    .footerColumn h3,
+    .footerPayTitle,
+    .footerPhrase,
+    .socialText {
+        text-align: center;
+    }
+
+    .footerItem,
+    .paymentItem,
+    .footerItemStatic {
+        justify-content: center;
+    }
+
+    .footerLine {
+        margin: 0 auto 20px;
+    }
+
+    .footerSocial {
+        justify-content: center;
+    }
+
+    .borderRight {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 0 0 30px;
+        width: 100%;
+    }
+
+    .footerBottom {
+        justify-content: center;
+        text-align: center;
+    }
+}
+/*=========================================================
+  CORREÇÃO FINAL DO CARD DO RODAPÉ
+=========================================================*/
+
+.footer {
+    width: 100%;
+    max-width: 1800px;
+    margin: 35px auto 25px;
+    padding: 0 25px;
+    box-sizing: border-box;
+}
+
+.footerContainer {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    box-sizing: border-box;
+
+    padding: 35px 40px;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 25px;
+    align-items: start;
+    grid-auto-rows: max-content;
+}
+
+.footerColumn {
+    min-width: 0;
+    height: auto;
+}
+
+.footerLogo h2 {
+    font-size: 27px;
+}
+
+.footerPhrase {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.footerColumn h3,
+.footerPayTitle {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.footerItem,
+.footerItemStatic,
+.paymentItem {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.footerWebsite {
+    font-size: 20px;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.footerEmail {
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.footerSocial {
+    gap: 10px;
+}
+
+.footerSocial a {
+    width: 44px;
+    height: 44px;
+    font-size: 17px;
+}
+
+.emailColumn p,
+.socialText {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.footerBottom {
+    grid-column: 1 / -1;
+    margin-top: 10px;
+    padding-top: 18px;
+}
+
+/* TABLET */
+
+@media (max-width: 1300px) {
+    .footerContainer {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        padding: 35px 30px;
+    }
+}
+
+/* CELULAR */
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 0 12px;
+        margin-top: 25px;
+    }
+
+    .footerContainer {
+        grid-template-columns: 1fr;
+        padding: 30px 22px;
+        gap: 25px;
+    }
+
+    .footerBottom {
+        grid-column: auto;
+    }
+}
+ /*=========================================================
+   AJUSTE DEFINITIVO DO FOOTER - DESKTOP
+=========================================================*/
+
+.footerContainer {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1.1fr)
+        minmax(0, 1.1fr)
+        minmax(0, 1.5fr)
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+    gap: 24px;
+    padding: 38px 40px;
+    align-items: start;
+}
+
+.footerColumn,
+.footerLogo,
+.emailColumn {
+    min-width: 0;
+    width: 100%;
+}
+
+.footerWebsite {
+    font-size: 20px;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+    word-break: normal;
+}
+
+.footerEmail {
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.footerItem span,
+.footerItemStatic span,
+.paymentItem span {
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+/* Só reduz para 3 colunas em telas realmente menores */
+@media (max-width: 1100px) {
+    .footerContainer {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* Celular */
+@media (max-width: 700px) {
+    .footer {
+        padding: 0 12px;
+    }
+
+    .footerContainer {
+        grid-template-columns: 1fr;
+        padding: 30px 22px;
+        gap: 28px;
+    }
+
+    .footerColumn,
+    .footerLogo,
+    .emailColumn {
+        align-items: center;
+        text-align: center;
+    }
+
+    .footerPhrase,
+    .socialText,
+    .footerColumn h3,
+    .footerPayTitle {
+        text-align: center;
+    }
+
+    .footerItem,
+    .footerItemStatic,
+    .paymentItem {
+        justify-content: center;
+    }
+
+    .footerBottom {
+        justify-content: center;
+        text-align: center;
+    }
+}
+/*=========================================================
+  AJUSTE FINAL - ALTURA E ALINHAMENTO DO RODAPÉ
+=========================================================*/
+
+.footerContainer {
+    grid-template-columns:
+        1.05fr
+        1.15fr
+        1.65fr
+        1fr
+        1.15fr;
+
+    padding: 28px 38px 22px;
+    gap: 22px;
+    align-items: start;
+}
+
+.footerLogo,
+.footerColumn,
+.emailColumn {
+    height: auto;
+    min-height: 0;
+}
+
+.footerWebsite {
+    font-size: 18px;
+    line-height: 1.25;
+    white-space: normal;
+    text-align: center;
+}
+
+.footerWebsite span {
+    overflow-wrap: anywhere;
+}
+
+.footerEmail {
+    font-size: 13px;
+    line-height: 1.3;
+    text-align: center;
+}
+
+.footerHeart {
+    margin: 8px 0;
+    font-size: 20px;
+}
+
+.emailColumn p {
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.footerSocial a {
+    width: 42px;
+    height: 42px;
+    font-size: 17px;
+}
+
+.footerBottom {
+    margin-top: 18px;
+    padding-top: 18px;
+}
+
+/* Telas menores */
+
+@media (max-width: 1100px) {
+    .footerContainer {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .footerContainer {
+        grid-template-columns: 1fr;
+        padding: 30px 22px;
+    }
+}
+/* AJUSTE FINAL DE ALTURA E TEXTO */
+
+.footer {
+    margin: 20px auto 20px;
+    padding: 0 20px;
+}
+
+.footerContainer {
+    padding: 24px 30px 18px;
+    gap: 20px;
+}
+
+.footerWebsite {
+    font-size: 16px;
+    white-space: nowrap;
+    gap: 8px;
+}
+
+.footerEmail {
+    font-size: 12px;
+    white-space: nowrap;
+    gap: 8px;
+}
+
+.footerHeart {
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+.emailColumn p {
+    font-size: 13px;
+    line-height: 1.3;
+}
+
+.footerColumn h3,
+.footerPayTitle {
+    margin-bottom: 12px;
+}
+
+.footerItem,
+.footerItemStatic,
+.paymentItem {
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+
+.footerSocial {
+    gap: 8px;
+}
+
+.footerSocial a {
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+}
+
+.footerBottom {
+    margin-top: 12px;
+    padding-top: 14px;
+}
+.footer {
+    margin-top: 0 !important;
 }

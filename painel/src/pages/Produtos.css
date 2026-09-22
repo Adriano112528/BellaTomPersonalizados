@@ -1065,3 +1065,187 @@
   color: #08111f;
   transform: translateX(-3px);
 }
+/* =========================================================
+   BELLA TOM — PRODUTOS
+   PALETA ROSA E GRAFITE
+   ========================================================= */
+
+.produtos-page {
+  color: #ffffff;
+}
+
+/* Ícone do cabeçalho */
+.produtos-header-icon {
+  color: #f9a8d4 !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(244, 114, 182, 0.18),
+      rgba(244, 114, 182, 0.04)
+    ) !important;
+
+  border-color: rgba(244, 114, 182, 0.30) !important;
+}
+
+/* Botão Novo Produto */
+.novo-produto-button {
+  border-color: rgba(244, 114, 182, 0.45) !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f9a8d4,
+      #db2777
+    ) !important;
+
+  color: #241521 !important;
+
+  box-shadow:
+    0 8px 24px rgba(236, 72, 153, 0.18) !important;
+}
+
+.novo-produto-button:hover {
+  background:
+    linear-gradient(
+      135deg,
+      #fbcfe8,
+      #ec4899
+    ) !important;
+
+  box-shadow:
+    0 12px 30px rgba(236, 72, 153, 0.28) !important;
+}
+
+/* Botões de voltar */
+.voltar-produto-button,
+.voltar-produtos-lista-button {
+  color: #f9a8d4 !important;
+  border-color: rgba(244, 114, 182, 0.25) !important;
+  background: rgba(244, 114, 182, 0.07) !important;
+}
+
+.voltar-produto-button:hover,
+.voltar-produtos-lista-button:hover {
+  color: #241521 !important;
+  border-color: #f472b6 !important;
+  background: #f472b6 !important;
+}
+
+/* Ícones das estatísticas */
+.stat-icon {
+  color: #f9a8d4 !important;
+  background: rgba(244, 114, 182, 0.10) !important;
+  border-color: rgba(244, 114, 182, 0.22) !important;
+}
+
+/* Busca */
+.produtos-search:focus-within {
+  border-color: rgba(244, 114, 182, 0.45) !important;
+  background: rgba(244, 114, 182, 0.045) !important;
+}
+
+.filtro-button:hover {
+  color: #f9a8d4 !important;
+  border-color: rgba(244, 114, 182, 0.30) !important;
+  background: rgba(244, 114, 182, 0.08) !important;
+}
+
+/* Estado vazio */
+.empty-icon {
+  color: #f9a8d4 !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(244, 114, 182, 0.13),
+      rgba(244, 114, 182, 0.035)
+    ) !important;
+
+  border-color: rgba(244, 114, 182, 0.25) !important;
+}
+
+.empty-button {
+  color: #f9a8d4 !important;
+  border-color: rgba(244, 114, 182, 0.30) !important;
+  background: rgba(244, 114, 182, 0.08) !important;
+}
+
+.empty-button:hover {
+  color: #ffffff !important;
+  background: rgba(244, 114, 182, 0.18) !important;
+  border-color: rgba(244, 114, 182, 0.50) !important;
+}
+
+/* Área de upload */
+.produto-image-upload {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(244, 114, 182, 0.045),
+      rgba(255, 255, 255, 0.018)
+    ) !important;
+
+  border-color: rgba(244, 114, 182, 0.35) !important;
+}
+
+.produto-image-placeholder {
+  color: #f9a8d4 !important;
+}
+
+.produto-upload-button {
+  color: #f9a8d4 !important;
+  background: rgba(244, 114, 182, 0.09) !important;
+  border-color: rgba(244, 114, 182, 0.30) !important;
+}
+
+.produto-upload-button:hover {
+  background: rgba(244, 114, 182, 0.16) !important;
+  border-color: rgba(244, 114, 182, 0.50) !important;
+}
+
+/* Campos do formulário */
+.campo-produto input:focus,
+.campo-produto textarea:focus,
+.campo-produto select:focus {
+  border-color: rgba(244, 114, 182, 0.50) !important;
+
+  box-shadow:
+    0 0 0 3px rgba(244, 114, 182, 0.08) !important;
+}
+
+/* Botão de status */
+.produto-status-toggle {
+  border-color: rgba(244, 114, 182, 0.25);
+  background: rgba(244, 114, 182, 0.08);
+  color: #f9a8d4;
+}
+
+/* Botão Salvar */
+.salvar-produto-button {
+  border-color: rgba(244, 114, 182, 0.45) !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f9a8d4,
+      #db2777
+    ) !important;
+
+  color: #241521 !important;
+
+  box-shadow:
+    0 7px 20px rgba(236, 72, 153, 0.18) !important;
+}
+
+.salvar-produto-button:hover {
+  background:
+    linear-gradient(
+      135deg,
+      #fbcfe8,
+      #ec4899
+    ) !important;
+
+  box-shadow:
+    0 10px 25px rgba(236, 72, 153, 0.28) !important;
+}

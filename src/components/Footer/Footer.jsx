@@ -24,6 +24,13 @@ const contatoPadrao = {
   horario: "Segunda a sexta, das 8h às 18h",
 };
 
+/*=========================================================
+  NÚMEROS FIXOS DOS BOTÕES DO WHATSAPP
+=========================================================*/
+
+const whatsappPrincipalFixo = "5554991805078";
+const whatsappSecundarioFixo = "5554992724941";
+
 const redesSociaisPadrao = {
   instagram: "https://www.instagram.com/bellatompersonalizados/",
   facebook: "https://www.facebook.com/share/1DVuoG1Nci/",
@@ -31,12 +38,12 @@ const redesSociaisPadrao = {
     {
       id: 1,
       nome: "WhatsApp principal",
-      numero: "5554991805078",
+      numero: whatsappPrincipalFixo,
     },
     {
       id: 2,
       nome: "WhatsApp secundário",
-      numero: "5554992724941",
+      numero: whatsappSecundarioFixo,
     },
   ],
 };
@@ -55,9 +62,12 @@ function criarLinkWhatsApp(numero, mensagem) {
 
 export default function Footer() {
   const [contato, setContato] = useState(contatoPadrao);
-  const [redesSociais, setRedesSociais] = useState(
-    redesSociaisPadrao
-  );
+
+  const [redesSociais, setRedesSociais] = useState({
+    instagram: redesSociaisPadrao.instagram,
+    facebook: redesSociaisPadrao.facebook,
+    whatsappNumbers: redesSociaisPadrao.whatsappNumbers,
+  });
 
   useEffect(() => {
     async function carregarDados() {
@@ -73,14 +83,20 @@ export default function Footer() {
           setContato({
             telefone:
               dadosContato.telefone || contatoPadrao.telefone,
+
             whatsapp:
               dadosContato.whatsapp || contatoPadrao.whatsapp,
+
             whatsappSecundario:
               dadosContato.whatsappSecundario ||
               contatoPadrao.whatsappSecundario,
-            email: dadosContato.email || contatoPadrao.email,
+
+            email:
+              dadosContato.email || contatoPadrao.email,
+
             endereco:
               dadosContato.endereco || contatoPadrao.endereco,
+
             horario:
               dadosContato.horario || contatoPadrao.horario,
           });
@@ -92,19 +108,19 @@ export default function Footer() {
           setRedesSociais({
             instagram:
               dadosRedes.instagram || redesSociaisPadrao.instagram,
+
             facebook:
               dadosRedes.facebook || redesSociaisPadrao.facebook,
-            whatsappNumbers:
-              dadosRedes.whatsappNumbers?.length > 0
-                ? dadosRedes.whatsappNumbers
-                : redesSociaisPadrao.whatsappNumbers,
+
+            /*
+              Os números continuam fixos no código.
+              A API não altera os botões do WhatsApp.
+            */
+            whatsappNumbers: redesSociaisPadrao.whatsappNumbers,
           });
         }
       } catch (erro) {
-        console.error(
-          "Erro ao carregar dados do Footer:",
-          erro
-        );
+        console.error("Erro ao carregar dados do Footer:", erro);
       }
     }
 
@@ -119,13 +135,10 @@ Visitei o site da Bellatom Personalizados e gostaria de solicitar um orçamento.
 Poderia me ajudar?
   `.trim();
 
-  const whatsappPrincipal =
-    redesSociais.whatsappNumbers[0]?.numero ||
-    contato.whatsapp;
+  /* NÚMEROS USADOS DIRETAMENTE PELOS BOTÕES */
 
-  const whatsappSecundario =
-    redesSociais.whatsappNumbers[1]?.numero ||
-    contato.whatsappSecundario;
+  const whatsappPrincipal = whatsappPrincipalFixo;
+  const whatsappSecundario = whatsappSecundarioFixo;
 
   const linkWhatsApp = criarLinkWhatsApp(
     whatsappPrincipal,
@@ -290,6 +303,8 @@ Poderia me ajudar?
           </p>
         </div>
       </div>
+
+      {/* RODAPÉ INFERIOR */}
 
       <div className="footerBottom">
         <span>

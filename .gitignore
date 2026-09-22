@@ -22,3 +22,27 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Variáveis de ambiente
+.env
+.env.*
+!.env.example
+
+# Bancos SQLite e backups
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+*backup*
+
+# Arquivos temporários de migração e testes
+server/teste-*.js
+server/database/gerar_sql_*.js
+server/database/migracao_supabase.sql
+server/database/migrar_imagem_*.sql
+painel/.firebase/
+.firebase/
+.firebase/
+painel/.firebase/
+painel/.firebase/

@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 import "./ContatoEditor.css";
 
+const API_URL =
+  `${import.meta.env.VITE_API_URL || "http://localhost:3001"}/api/contato`;
+
 const contatoInicial = {
   telefone: "",
   whatsapp: "",
@@ -27,9 +30,7 @@ export default function ContatoEditor() {
         setCarregando(true);
         setErro("");
 
-        const resposta = await fetch(
-          "https://bellatompersonalizados.onrender.com/api/contato"
-        );
+        const resposta = await fetch(API_URL);
 
         if (!resposta.ok) {
           throw new Error("Não foi possível carregar os dados.");
@@ -77,16 +78,13 @@ export default function ContatoEditor() {
       setMensagem("");
       setErro("");
 
-      const resposta = await fetch(
-        "https://bellatompersonalizados.onrender.com/api/contato",
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(form),
-        }
-      );
+      const resposta = await fetch(API_URL, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
 
       const dados = await resposta.json();
 
@@ -109,7 +107,9 @@ export default function ContatoEditor() {
     } catch (error) {
       console.error("Erro ao salvar contato:", error);
 
-      setErro(error.message || "Não foi possível salvar os dados.");
+      setErro(
+        error.message || "Não foi possível salvar os dados."
+      );
     } finally {
       setSalvando(false);
     }
