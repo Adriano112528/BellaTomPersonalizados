@@ -1,4 +1,8 @@
-require("dotenv").config();
+const path = require("path");
+
+require("dotenv").config({
+  path: path.join(__dirname, ".env"),
+});
 
 const express = require("express");
 const cors = require("cors");
@@ -14,6 +18,9 @@ const redesSociaisRoutes = require("./routes/redesSociaisRoutes");
 
 // ESTOQUE AGORA USA POSTGRESQL
 const estoqueRoutes = require("./routes/estoqueRoutesPostgres");
+
+// PEDIDOS AGORA USA POSTGRESQL
+const pedidoRoutes = require("./routes/pedidoRoutesPostgres");
 
 // SQLite ainda mantido para as partes que ainda utilizam o banco antigo
 const db = require("./database/database");
@@ -69,6 +76,9 @@ app.use("/api/contato", contatoRoutes);
 app.use("/api/redes-sociais", redesSociaisRoutes);
 
 app.use("/api/estoque", estoqueRoutes);
+
+// PEDIDOS
+app.use("/api/pedidos", pedidoRoutes);
 
 // ========================================
 // ROTA PRINCIPAL
